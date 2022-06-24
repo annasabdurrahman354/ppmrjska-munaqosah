@@ -58,6 +58,11 @@ class MateriMunaqosah extends Model
         'semester',
     ];
 
+    public function getFullMateriAttribute()
+    {
+        return "{$this->materi} ({$this->angkatan})";
+    }
+
     public function getJenisLabelAttribute($value)
     {
         return static::JENIS_SELECT[$this->jenis] ?? null;

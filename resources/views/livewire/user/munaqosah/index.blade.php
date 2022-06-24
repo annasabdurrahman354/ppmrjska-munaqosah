@@ -7,27 +7,13 @@
                     <option value="{{ $value }}">{{ $value }}</option>
                 @endforeach
             </select>
-
-            @can('jadwal_munaqosah_delete')
+            @can('plot_munaqosah_delete')
                 <button class="btn btn-rose ml-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('deleteSelected')" wire:loading.attr="disabled" {{ $this->selectedCount ? '' : 'disabled' }}>
                     {{ __('Delete Selected') }}
                 </button>
             @endcan
-
-            @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="JadwalMunaqosah" format="csv" />
-                <livewire:excel-export model="JadwalMunaqosah" format="xlsx" />
-                <livewire:excel-export model="JadwalMunaqosah" format="pdf" />
-            @endif
-
-
-
-
         </div>
-        <div class="w-full sm:w-1/2 sm:text-right">
-            Search:
-            <input type="text" wire:model.debounce.300ms="search" class="w-full sm:w-1/3 inline-block" />
-        </div>
+
     </div>
     <div wire:loading.delay>
         Loading...
@@ -41,113 +27,107 @@
                         <th class="w-9">
                         </th>
                         <th class="w-28">
-                            {{ trans('cruds.jadwalMunaqosah.fields.id') }}
+                            {{ trans('cruds.plotMunaqosah.fields.id') }}
                             @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
-                            {{ trans('cruds.jadwalMunaqosah.fields.sesi') }}
-                            @include('components.table.sort', ['field' => 'sesi'])
+                            {{ trans('cruds.plotMunaqosah.fields.jadwal_munaqosah') }}
+                            @include('components.table.sort', ['field' => 'jadwal_munaqosah.sesi'])
                         </th>
                         <th>
+                            {{ trans('cruds.plotMunaqosah.fields.user') }}
+                            @include('components.table.sort', ['field' => 'user.name'])
+                        </th>
+                        
+                        <th>
                             {{ trans('cruds.jadwalMunaqosah.fields.materi') }}
-                            @include('components.table.sort', ['field' => 'materi.materi'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.keterangan') }}
-                            @include('components.table.sort', ['field' => 'materi.keterangan'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.jenis') }}
-                            @include('components.table.sort', ['field' => 'materi.jenis'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
-                            @include('components.table.sort', ['field' => 'materi.angkatan'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.tahun_pelajaran') }}
-                            @include('components.table.sort', ['field' => 'materi.tahun_pelajaran'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.semester') }}
-                            @include('components.table.sort', ['field' => 'materi.semester'])
                         </th>
                         <th>
                             {{ trans('cruds.jadwalMunaqosah.fields.dewan_guru') }}
-                            @include('components.table.sort', ['field' => 'dewan_guru.name'])
                         </th>
-                        <th>
-                            {{ trans('cruds.jadwalMunaqosah.fields.maks_santri') }}
-                            @include('components.table.sort', ['field' => 'maks_santri'])
-                        </th>
+
+
                         <th>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse($jadwalMunaqosahs as $jadwalMunaqosah)
+                    @forelse($plotMunaqosahs as $plotMunaqosah)
                         <tr>
                             <td>
-                                <input type="checkbox" value="{{ $jadwalMunaqosah->id }}" wire:model="selected">
+                                <input type="checkbox" value="{{ $plotMunaqosah->id }}" wire:model="selected">
                             </td>
                             <td>
-                                {{ $jadwalMunaqosah->id }}
+                                {{ $plotMunaqosah->id }}
                             </td>
                             <td>
-                                {{ $jadwalMunaqosah->sesi }}
-                            </td>
-                            <td>
-                                @if($jadwalMunaqosah->materi)
-                                    <span class="badge badge-relationship">{{ $jadwalMunaqosah->materi->materi ?? '' }}</span>
+                                @if($plotMunaqosah->jadwalMunaqosah)
+                                    <span class="badge badge-relationship">{{ $plotMunaqosah->jadwalMunaqosah->sesi ?? '' }}</span>
                                 @endif
                             </td>
                             <td>
-                                @if($jadwalMunaqosah->materi)
-                                    {{ $jadwalMunaqosah->materi->keterangan ?? '' }}
+                                @if($plotMunaqosah->user)
+                                    <span class="badge badge-relationship">{{ $plotMunaqosah->user->name ?? '' }}</span>
+                                @endif
+                            </td>
+
+                            <td>
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    <span class="badge badge-relationship">{{ $plotMunaqosah->jadwalMunaqosah->materi->materi ?? '' }}</span>
                                 @endif
                             </td>
                             <td>
-                                @if($jadwalMunaqosah->materi)
-                                    {{ $jadwalMunaqosah->materi->jenis_label }}
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->keterangan ?? '' }}
                                 @endif
                             </td>
                             <td>
-                                @if($jadwalMunaqosah->materi)
-                                    {{ $jadwalMunaqosah->materi->angkatan ?? '' }}
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->jenis_label }}
                                 @endif
                             </td>
                             <td>
-                                @if($jadwalMunaqosah->materi)
-                                    {{ $jadwalMunaqosah->materi->tahun_pelajaran ?? '' }}
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->angkatan ?? '' }}
                                 @endif
                             </td>
                             <td>
-                                @if($jadwalMunaqosah->materi)
-                                    {{ $jadwalMunaqosah->materi->semester ?? '' }}
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->tahun_pelajaran ?? '' }}
                                 @endif
                             </td>
                             <td>
-                                @if($jadwalMunaqosah->dewanGuru)
-                                    <span class="badge badge-relationship">{{ $jadwalMunaqosah->dewanGuru->name ?? '' }}</span>
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->semester ?? '' }}
                                 @endif
                             </td>
                             <td>
-                                {{ $jadwalMunaqosah->maks_santri }}
+                                @if($plotMunaqosah->jadwalMunaqosah->dewanGuru)
+                                    <span class="badge badge-relationship">{{ $plotMunaqosah->jadwalMunaqosah->dewanGuru->name ?? '' }}</span>
+                                @endif
                             </td>
+
+
+                            
                             <td>
                                 <div class="flex justify-end">
-                                    @can('jadwal_munaqosah_show')
-                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.jadwal-munaqosah.show', $jadwalMunaqosah) }}">
-                                            {{ trans('global.view') }}
-                                        </a>
-                                    @endcan
-                                    @can('jadwal_munaqosah_edit')
-                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.jadwal-munaqosah.edit', $jadwalMunaqosah) }}">
-                                            {{ trans('global.edit') }}
-                                        </a>
-                                    @endcan
-                                    @can('jadwal_munaqosah_delete')
-                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $jadwalMunaqosah->id }})" wire:loading.attr="disabled">
+                                    @can('plot_munaqosah_delete')
+                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $plotMunaqosah->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
                                         </button>
                                     @endcan
@@ -174,7 +154,7 @@
                     {{ __('Entries selected') }}
                 </p>
             @endif
-            {{ $jadwalMunaqosahs->links() }}
+            {{ $plotMunaqosahs->links() }}
         </div>
     </div>
 </div>

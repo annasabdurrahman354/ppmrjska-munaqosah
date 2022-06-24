@@ -20,7 +20,6 @@ class JadwalMunaqosah extends Model
     public $orderable = [
         'id',
         'sesi',
-        'keterangan',
         'materi.materi',
         'materi.keterangan',
         'materi.jenis',
@@ -34,7 +33,6 @@ class JadwalMunaqosah extends Model
     public $filterable = [
         'id',
         'sesi',
-        'keterangan',
         'materi.materi',
         'materi.keterangan',
         'materi.jenis',
@@ -54,11 +52,15 @@ class JadwalMunaqosah extends Model
 
     protected $fillable = [
         'sesi',
-        'keterangan',
         'materi_id',
         'dewan_guru_id',
         'maks_santri',
     ];
+
+    public function getFullJadwalAttribute()
+    {
+        return "{$this->sesi} - {$this->materi->materi} - {$this->dewanGuru->name} ({$this->materi->angkatan})";
+    }
 
     public function getSesiAttribute($value)
     {

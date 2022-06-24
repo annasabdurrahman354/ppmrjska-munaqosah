@@ -14,11 +14,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements HasLocalePreference, MustVerifyEmail
+class User extends Authenticatable implements HasLocalePreference //,MustVerifyEmail
 {
     use HasFactory;
     use HasAdvancedFilter;
-    use Notifiable;
+    //use Notifiable;
     use SoftDeletes;
 
     public const STATUS_SELECT = [
@@ -114,6 +114,11 @@ class User extends Authenticatable implements HasLocalePreference, MustVerifyEma
     public function getIsAdminAttribute()
     {
         return $this->roles()->where('title', 'Admin')->exists();
+    }
+
+    public function getFullNamaAttribute()
+    {
+        return "{$this->name} ({$this->angkatan_ppm})";
     }
 
     public function scopeAdmins()

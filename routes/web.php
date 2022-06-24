@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Auth\Dashboard;
+use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\DewanGuruController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\JadwalMunaqosahController;
@@ -17,7 +18,7 @@ use App\Http\Controllers\Admin\ProvinsiController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\KalenderMunaqosahController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\UserProfileController;
+use App\Http\Controllers\User\UserMunaqosahController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,10 @@ Route::group(['middleware' => ['guest']], function() {
     
 });
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'verified']], function () {
+//['auth', 'verified']
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
+    
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // Permissions
@@ -75,5 +79,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'v
     // Materi Munaqosah
     Route::resource('materi-munaqosah', MateriMunaqosahController::class, ['except' => ['store', 'update', 'destroy']]);
 
-    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
+    Route::get('/profile', [AdminProfileController::class, 'show'])->name('profile');
+});
+
+Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {
+    // Program Donasi
+    Route::get('/', function () { return view('user.home');})->name('home');
+    Route::resource('munaqosah', UserMunaqosahController::class, ['only' => ['index']]);
 });

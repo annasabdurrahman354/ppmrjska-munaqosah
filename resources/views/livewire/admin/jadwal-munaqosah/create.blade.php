@@ -10,16 +10,6 @@
             {{ trans('cruds.jadwalMunaqosah.fields.sesi_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('jadwalMunaqosah.keterangan') ? 'invalid' : '' }}">
-        <label class="form-label required" for="keterangan">{{ trans('cruds.jadwalMunaqosah.fields.keterangan') }}</label>
-        <input class="form-control" type="text" name="keterangan" id="keterangan" required wire:model.defer="jadwalMunaqosah.keterangan">
-        <div class="validation-message">
-            {{ $errors->first('jadwalMunaqosah.keterangan') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.jadwalMunaqosah.fields.keterangan_helper') }}
-        </div>
-    </div>
     <div class="form-group {{ $errors->has('jadwalMunaqosah.materi_id') ? 'invalid' : '' }}">
         <label class="form-label required" for="materi">{{ trans('cruds.jadwalMunaqosah.fields.materi') }}</label>
         <x-select-list class="form-control" required id="materi" name="materi" :options="$this->listsForFields['materi']" wire:model="jadwalMunaqosah.materi_id" />

@@ -51,7 +51,7 @@ class Create extends Component
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['jadwal_munaqosah'] = JadwalMunaqosah::pluck('sesi', 'id')->toArray();
-        $this->listsForFields['user']             = User::pluck('name', 'id')->toArray();
+        $this->listsForFields['jadwal_munaqosah'] = JadwalMunaqosah::all()->pluck('full_jadwal', 'id')->toArray();
+        $this->listsForFields['user']             = User::all()->pluck('full_nama', 'id')->toArray();
     }
 }

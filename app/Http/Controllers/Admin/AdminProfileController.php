@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class UserProfileController extends Controller
+class AdminProfileController extends Controller
 {
     public function show(Request $request)
     {

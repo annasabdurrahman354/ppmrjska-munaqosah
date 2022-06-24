@@ -11,6 +11,7 @@
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.2.1",
+        "alpinejs": "^2.7.3",
         "@tailwindcss/jit": "^0.1.18",
         "autoprefixer": "^10.2.5",
         "axios": "^0.21.1",

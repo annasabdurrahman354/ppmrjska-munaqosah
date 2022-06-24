@@ -40,10 +40,6 @@ class Edit extends Component
                 'required',
                 'date_format:' . config('project.datetime_format'),
             ],
-            'jadwalMunaqosah.keterangan' => [
-                'string',
-                'required',
-            ],
             'jadwalMunaqosah.materi_id' => [
                 'integer',
                 'exists:materi_munaqosahs,id',
@@ -65,7 +61,7 @@ class Edit extends Component
 
     protected function initListsForFields(): void
     {
-        $this->listsForFields['materi']     = MateriMunaqosah::pluck('materi', 'id')->toArray();
+        $this->listsForFields['materi']     = MateriMunaqosah::all()->pluck('full_materi', 'id')->toArray();
         $this->listsForFields['dewan_guru'] = DewanGuru::pluck('name', 'id')->toArray();
     }
 }

@@ -11,7 +11,6 @@ class CreateJadwalMunaqosahsTable extends Migration
         Schema::create('jadwal_munaqosahs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->datetime('sesi');
-            $table->string('keterangan');
             $table->integer('maks_santri');
             $table->timestamps();
             $table->softDeletes();

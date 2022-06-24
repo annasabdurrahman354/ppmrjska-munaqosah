@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Livewire\User\Munaqosah;
 
-use App\Http\Controllers\Controller;
+use Livewire\Component;
 use App\Models\JadwalMunaqosah;
-use Gate;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Models\User;
 
-class KalenderMunaqosahController extends Controller
+
+class KalenderMunaqosahAngkatan extends Component
 {
+    public User $user;
+    
     public $sources = [
         [
             'model'      => JadwalMunaqosah::class,
@@ -21,14 +22,17 @@ class KalenderMunaqosahController extends Controller
         ],
     ];
 
-    public function index()
+    public function mount()
     {
-        abort_if(Gate::denies('kalender_munaqosah_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $this->user = auth()->user();         
+    }
 
+    public function render()
+    {       
         $events = [];
 
         foreach ($this->sources as $source) {
-            foreach ($source['model']::all() as $model) {
+            foreach ($source['model']::with('materi')->whereRelation('materi', 'angkatan', $this->user->angkatan_ppm)->get() as $model) {
                 $crudFieldValue = $model->getAttributes()[$source['date_field']];
 
                 if (!$crudFieldValue) {
@@ -48,6 +52,6 @@ class KalenderMunaqosahController extends Controller
             }
         }
 
-        return view('admin.kalender-munaqosah.index', compact('events'));
+        return view('livewire.user.munaqosah.kalender-munaqosah-angkatan', compact('events'));
     }
 }
