@@ -26,8 +26,8 @@
 
             <!-- Divider -->
             <div class="flex md:hidden">
-                @if(file_exists(app_path('Http/Livewire/LanguageSwitcher.php')))
-                    <livewire:language-switcher />
+                @if(file_exists(app_path('Http/Livewire/Admin/LanguageSwitcher.php')))
+                    <livewire:admin.language-switcher />
                 @endif
             </div>
             <hr class="mb-6 md:min-w-full" />
@@ -212,10 +212,10 @@
                     </li>
                 @endcan
 
-                @if(file_exists(app_path('Http/Controllers/Auth/UserProfileController.php')))
+                @if(file_exists(app_path('Http/Controllers/Admin/UserProfileController.php')))
                     @can('auth_profile_edit')
                         <li class="items-center">
-                            <a href="{{ route("profile.show") }}" class="{{ request()->is("profile") ? "sidebar-nav-active" : "sidebar-nav" }}">
+                            <a href="{{ route("admin.profile") }}" class="{{ request()->is("admin/profile") ? "sidebar-nav-active" : "sidebar-nav" }}">
                                 <i class="fa-fw c-sidebar-nav-icon fas fa-user-circle"></i>
                                 {{ trans('global.my_profile') }}
                             </a>

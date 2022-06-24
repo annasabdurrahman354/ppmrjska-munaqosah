@@ -16,7 +16,7 @@
                 @endcan
             </div>
         </div>
-        @livewire('plot-munaqosah.index')
+        @livewire('admin.plot-munaqosah.index')
 
     </div>
 </div>

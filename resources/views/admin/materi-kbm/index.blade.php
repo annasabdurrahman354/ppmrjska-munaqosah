@@ -16,7 +16,7 @@
                 @endcan
             </div>
         </div>
-        @livewire('materi-kbm.index')
+        @livewire('admin.materi-kbm.index')
 
     </div>
 </div>

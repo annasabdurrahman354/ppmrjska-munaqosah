@@ -16,7 +16,7 @@
                 @endcan
             </div>
         </div>
-        @livewire('dewan-guru.index')
+        @livewire('admin.dewan-guru.index')
 
     </div>
 </div>

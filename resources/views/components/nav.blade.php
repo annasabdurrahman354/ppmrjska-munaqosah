@@ -12,9 +12,9 @@
 
 
 
-        @if(file_exists(app_path('Http/Livewire/LanguageSwitcher.php')))
+        @if(file_exists(app_path('Http/Livewire/Admin/LanguageSwitcher.php')))
             <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-                <livewire:language-switcher />
+                <livewire:admin.language-switcher />
             </ul>
         @endif
 

@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('nilai-munaqosah.edit', [$nilaiMunaqosah])
+            @livewire('admin.nilai-munaqosah.edit', [$nilaiMunaqosah])
         </div>
     </div>
 </div>

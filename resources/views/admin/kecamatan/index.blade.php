@@ -16,7 +16,7 @@
                 @endcan
             </div>
         </div>
-        @livewire('kecamatan.index')
+        @livewire('admin.kecamatan.index')
 
     </div>
 </div>

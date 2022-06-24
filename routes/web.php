@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\ProvinsiController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\KalenderMunaqosahController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\Admin\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -74,10 +74,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'v
 
     // Materi Munaqosah
     Route::resource('materi-munaqosah', MateriMunaqosahController::class, ['except' => ['store', 'update', 'destroy']]);
-});
 
-Route::group(['prefix' => 'profile', 'as' => 'profile.', 'middleware' => ['auth']], function () {
-    if (file_exists(app_path('Http/Controllers/Auth/UserProfileController.php'))) {
-        Route::get('/', [UserProfileController::class, 'show'])->name('show');
-    }
+    Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
 });

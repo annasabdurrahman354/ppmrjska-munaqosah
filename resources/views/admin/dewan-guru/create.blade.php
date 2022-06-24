@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('dewan-guru.create')
+            @livewire('admin.dewan-guru.create')
         </div>
     </div>
 </div>

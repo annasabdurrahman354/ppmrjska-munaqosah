@@ -16,7 +16,7 @@
                 @endcan
             </div>
         </div>
-        @livewire('materi-munaqosah.index')
+        @livewire('admin.materi-munaqosah.index')
 
     </div>
 </div>

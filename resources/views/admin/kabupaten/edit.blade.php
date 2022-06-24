@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('kabupaten.edit', [$kabupaten])
+            @livewire('admin.kabupaten.edit', [$kabupaten])
         </div>
     </div>
 </div>

@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('plot-munaqosah.edit', [$plotMunaqosah])
+            @livewire('admin.plot-munaqosah.edit', [$plotMunaqosah])
         </div>
     </div>
 </div>

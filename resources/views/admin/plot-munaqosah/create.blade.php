@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('plot-munaqosah.create')
+            @livewire('admin.plot-munaqosah.create')
         </div>
     </div>
 </div>

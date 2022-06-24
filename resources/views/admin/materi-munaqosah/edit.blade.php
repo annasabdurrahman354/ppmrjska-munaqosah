@@ -14,7 +14,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('materi-munaqosah.edit', [$materiMunaqosah])
+            @livewire('admin.materi-munaqosah.edit', [$materiMunaqosah])
         </div>
     </div>
 </div>

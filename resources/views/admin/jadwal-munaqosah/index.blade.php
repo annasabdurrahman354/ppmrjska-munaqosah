@@ -16,7 +16,7 @@
                 @endcan
             </div>
         </div>
-        @livewire('jadwal-munaqosah.index')
+        @livewire('admin.jadwal-munaqosah.index')
 
     </div>
 </div>

@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('materi-kbm.create')
+            @livewire('admin.materi-kbm.create')
         </div>
     </div>
 </div>

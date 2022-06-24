@@ -12,7 +12,7 @@
         </div>
 
         <div class="card-body">
-            @livewire('jadwal-munaqosah.create')
+            @livewire('admin.jadwal-munaqosah.create')
         </div>
     </div>
 </div>
