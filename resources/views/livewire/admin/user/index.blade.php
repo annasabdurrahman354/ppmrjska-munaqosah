@@ -14,10 +14,10 @@
                 </button>
             @endcan
 
-            @if(file_exists(app_path('Http/Livewire/Admin/ExcelExport.php')))
-                <livewire:admin.excel-export model="User" format="csv" />
-                <livewire:admin.excel-export model="User" format="xlsx" />
-                <livewire:admin.excel-export model="User" format="pdf" />
+            @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
+                <livewire:excel-export model="User" format="csv" />
+                <livewire:excel-export model="User" format="xlsx" />
+                <livewire:excel-export model="User" format="pdf" />
             @endif
 
 
@@ -59,6 +59,10 @@
                         <th>
                             {{ trans('cruds.user.fields.email') }}
                             @include('components.table.sort', ['field' => 'email'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.jenis_kelamin') }}
+                            @include('components.table.sort', ['field' => 'jenis_kelamin'])
                         </th>
                         <th>
                             {{ trans('cruds.user.fields.universitas') }}
@@ -151,6 +155,9 @@
                                     </i>
                                     {{ $user->email }}
                                 </a>
+                            </td>
+                            <td>
+                                {{ $user->jenis_kelamin_label }}
                             </td>
                             <td>
                                 {{ $user->universitas }}

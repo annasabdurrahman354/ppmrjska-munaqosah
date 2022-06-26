@@ -30,8 +30,41 @@
                 headerToolbar: {
                                     left: 'prev,next today',
                                     center: 'title',
-                                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                                    right: 'dayGridMonth,dayGridWeek,timeGridWeek,timeGridDay,listWeek'
                                 },
+                eventClick: function(info) {
+                    info.jsEvent.preventDefault();
+                    alert(JSON.stringify(@json($events)))
+                    if (info.event.extendedProps.taken) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Anda telah mengambil materi munaqosah ini!',
+                        })
+                    }
+
+                    else if (info.event.extendedProps.full) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Sesi munaqosah sudah penuh!',
+                        })
+                    }
+                    else{
+                        Swal.fire({
+                            title: 'Ambil Jadwal Munaqosah?',
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ambil'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.open(info.event.url)
+                                }
+                            })
+                    }
+                }
             });
             calendar.render();
         });

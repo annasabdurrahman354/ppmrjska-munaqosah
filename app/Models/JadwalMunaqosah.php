@@ -86,4 +86,9 @@ class JadwalMunaqosah extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function plots()
+    {
+        return $this->hasMany(PlotMunaqosah::class);
+    }
 }

@@ -18,7 +18,7 @@ class KalenderMunaqosahAngkatan extends Component
             'field'      => 'keterangan',
             'prefix'     => '',
             'suffix'     => '',
-            'route'      => 'admin.jadwal-munaqosah.edit',
+            'route'      => 'user.munaqosah.plot',
         ],
     ];
 
@@ -32,12 +32,28 @@ class KalenderMunaqosahAngkatan extends Component
         $events = [];
 
         foreach ($this->sources as $source) {
-            foreach ($source['model']::with('materi')->whereRelation('materi', 'angkatan', $this->user->angkatan_ppm)->get() as $model) {
+            foreach ($source['model']::with('materi')->withCount('plots')->whereRelation('materi', 'angkatan', $this->user->angkatan_ppm)->get() as $model) {
                 $crudFieldValue = $model->getAttributes()[$source['date_field']];
 
                 if (!$crudFieldValue) {
                     continue;
                 }
+
+                $isFull = false;
+                if($model->plots_count >= $model->maks_santri){
+                    $isFull = true;
+                }
+
+                $isTaken = false;
+                if($this->user->telahAmbilMateriMunaqosah($model->materi->id)){
+                    $isTaken = true;
+                }
+
+                $url = null;
+                if($isFull != true && $isTaken != true){
+                    $url = route($source['route'], $model);
+                }
+
 
                 $events[] = [
                     'title' => sprintf(
@@ -46,8 +62,11 @@ class KalenderMunaqosahAngkatan extends Component
                         $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.')',
                         trim($source['suffix']),
                     ),
+                    'taken' => $isTaken,
+                    'full' => $isFull,
                     'start' => $crudFieldValue,
-                    'url'   => route($source['route'], $model),
+                    'color'   => "yellow",
+                    'url'   => $url,
                 ];
             }
         }

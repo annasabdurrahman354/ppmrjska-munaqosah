@@ -14,6 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('nis')->nullable()->unique();
             $table->string('telepon')->nullable();
             $table->string('email')->nullable()->unique();
+            $table->string('jenis_kelamin')->nullable();
             $table->string('universitas')->nullable();
             $table->string('prodi')->nullable();
             $table->integer('angkatan_ppm')->nullable();

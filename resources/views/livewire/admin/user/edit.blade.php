@@ -40,9 +40,24 @@
             {{ trans('cruds.user.fields.email_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('user.jenis_kelamin') ? 'invalid' : '' }}">
+        <label class="form-label required">{{ trans('cruds.user.fields.jenis_kelamin') }}</label>
+        <select class="form-control" wire:model="user.jenis_kelamin">
+            <option value="null" disabled>{{ trans('global.pleaseSelect') }}...</option>
+            @foreach($this->listsForFields['jenis_kelamin'] as $key => $value)
+                <option value="{{ $key }}">{{ $value }}</option>
+            @endforeach
+        </select>
+        <div class="validation-message">
+            {{ $errors->first('user.jenis_kelamin') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.user.fields.jenis_kelamin_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('user.universitas') ? 'invalid' : '' }}">
-        <label class="form-label required" for="universitas">{{ trans('cruds.user.fields.universitas') }}</label>
-        <input class="form-control" type="text" name="universitas" id="universitas" required wire:model.defer="user.universitas">
+        <label class="form-label" for="universitas">{{ trans('cruds.user.fields.universitas') }}</label>
+        <input class="form-control" type="text" name="universitas" id="universitas" wire:model.defer="user.universitas">
         <div class="validation-message">
             {{ $errors->first('user.universitas') }}
         </div>
@@ -51,8 +66,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('user.prodi') ? 'invalid' : '' }}">
-        <label class="form-label required" for="prodi">{{ trans('cruds.user.fields.prodi') }}</label>
-        <input class="form-control" type="text" name="prodi" id="prodi" required wire:model.defer="user.prodi">
+        <label class="form-label" for="prodi">{{ trans('cruds.user.fields.prodi') }}</label>
+        <input class="form-control" type="text" name="prodi" id="prodi" wire:model.defer="user.prodi">
         <div class="validation-message">
             {{ $errors->first('user.prodi') }}
         </div>
@@ -71,8 +86,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('user.angkatan_kuliah') ? 'invalid' : '' }}">
-        <label class="form-label required" for="angkatan_kuliah">{{ trans('cruds.user.fields.angkatan_kuliah') }}</label>
-        <input class="form-control" type="number" name="angkatan_kuliah" id="angkatan_kuliah" required wire:model.defer="user.angkatan_kuliah" step="1">
+        <label class="form-label" for="angkatan_kuliah">{{ trans('cruds.user.fields.angkatan_kuliah') }}</label>
+        <input class="form-control" type="number" name="angkatan_kuliah" id="angkatan_kuliah" wire:model.defer="user.angkatan_kuliah" step="1">
         <div class="validation-message">
             {{ $errors->first('user.angkatan_kuliah') }}
         </div>

@@ -7,8 +7,9 @@
     <meta name="theme-color" content="#000000" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
-    <title>{{ trans('panel.site_title') }}</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
+    <title>{{ trans('panel.site_title') }}</title>
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
     @livewireStyles
     @stack('styles')
@@ -22,7 +23,7 @@
         <x-sidebar />
 
         <div class="relative md:ml-64 bg-blueGray-50 min-h-screen">
-            <x-nav />
+            <x-navbar-admin />
 
             <div class="relative bg-pink-600 md:pt-32 pb-32 pt-12">
                 <div class="px-4 md:px-10 mx-auto w-full">&nbsp;</div>

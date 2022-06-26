@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin\User;
+namespace App\Http\Livewire\User;
 
 use App\Http\Livewire\WithConfirmation;
 use App\Http\Livewire\WithSorting;

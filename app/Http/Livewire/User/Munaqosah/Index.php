@@ -86,17 +86,15 @@ class Index extends Component
 
     public function deleteSelected()
     {
-        abort_if(Gate::denies('plot_munaqosah_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         PlotMunaqosah::whereIn('id', $this->selected)->delete();
 
         $this->resetSelected();
+        return redirect(request()->header('Referer'));
     }
 
     public function delete(PlotMunaqosah $plotMunaqosah)
     {
-        abort_if(Gate::denies('plot_munaqosah_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
         $plotMunaqosah->delete();
+        return redirect(request()->header('Referer'));
     }
 }

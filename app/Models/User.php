@@ -18,8 +18,13 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
 {
     use HasFactory;
     use HasAdvancedFilter;
-    //use Notifiable;
+    use Notifiable;
     use SoftDeletes;
+
+    public const JENIS_KELAMIN_SELECT = [
+        'l' => 'Laki-laki',
+        'p' => 'Perempuan',
+    ];
 
     public const STATUS_SELECT = [
         'aktif'     => 'Aktif',
@@ -36,6 +41,7 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         'nis',
         'telepon',
         'email',
+        'jenis_kelamin',
         'universitas',
         'prodi',
         'angkatan_ppm',
@@ -59,6 +65,7 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         'nis',
         'telepon',
         'email',
+        'jenis_kelamin',
         'universitas',
         'prodi',
         'angkatan_ppm',
@@ -94,6 +101,7 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         'nis',
         'telepon',
         'email',
+        'jenis_kelamin',
         'universitas',
         'prodi',
         'angkatan_ppm',
@@ -129,6 +137,11 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
     public function preferredLocale()
     {
         return $this->locale;
+    }
+
+    public function getJenisKelaminLabelAttribute($value)
+    {
+        return static::JENIS_KELAMIN_SELECT[$this->jenis_kelamin] ?? null;
     }
 
     public function provinsi()

@@ -27,14 +27,15 @@ Route::redirect('/', '/login');
 Auth::routes(['verify' => true]);
 
 Route::group(['middleware' => ['guest']], function() {
+
     Route::get('/register', Register::class)->name('register');
-    
+
 });
 
 //['auth', 'verified']
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], function () {
-    
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'admin']], function () {
+
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // Permissions
@@ -83,7 +84,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth']], 
 });
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {
-    // Program Donasi
+    
     Route::get('/', function () { return view('user.home');})->name('home');
     Route::resource('munaqosah', UserMunaqosahController::class, ['only' => ['index']]);
+    Route::get('munaqosah/plot/{jadwalMunaqosah}', [UserMunaqosahController::class, 'plot'])->name('munaqosah.plot')->where('jadwalMunaqosah', '[0-9]+');
+
 });

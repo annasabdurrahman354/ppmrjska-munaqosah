@@ -1,4 +1,5 @@
 const plugin = require("tailwindcss/plugin")
+const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors')
 
 module.exports = {
@@ -19,6 +20,9 @@ module.exports = {
         lightBlue: colors.sky,
         orange: colors.orange,
         red: colors.red
+      },
+      fontFamily: {
+        sans: ['Nunito', ...defaultTheme.fontFamily.sans],
       },
       minHeight: {
         'screen-75': '75vh'

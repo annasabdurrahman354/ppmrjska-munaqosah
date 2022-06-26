@@ -20,12 +20,16 @@ class PlotMunaqosah extends Model
         'id',
         'jadwal_munaqosah.sesi',
         'user.name',
+        'user.angkatan_ppm',
+        'user.jenis_kelamin',
     ];
 
     public $filterable = [
         'id',
         'jadwal_munaqosah.sesi',
         'user.name',
+        'user.angkatan_ppm',
+        'user.jenis_kelamin',
     ];
 
     protected $fillable = [
@@ -52,5 +56,10 @@ class PlotMunaqosah extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+    
+    public function getMateriIdAttribute()
+    {
+        return $this->jadwalMunaqosah->materi->id;
     }
 }
