@@ -39,8 +39,16 @@
                         Swal.fire({
                             icon: 'error',
                             title: 'Anda telah terjadwal materi munaqosah ini!',
-                            text: 'Hapus munaqosah materi yang sama jika belum terlaksana.',
-                        })
+                            text: 'Ingin melihat daftar santri sesi ini?',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Lihat'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.open(info.event.url, "_self")
+                                }
+                            })
                     }
 
                     else if (info.event.extendedProps.full) {
@@ -68,7 +76,6 @@
                             confirmButtonText: 'Ambil'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                       
                                     window.open(info.event.url, "_self")
                                 }
                             })

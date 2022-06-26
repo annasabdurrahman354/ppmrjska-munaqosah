@@ -51,10 +51,10 @@ class KalenderMunaqosahAngkatan extends Component
                     $isTaken = true;
                 }
 
-                $url = null;
-                if($isFull != true && $isTaken != true){
+                // $url = null;
+                // if($isFull != true && $isTaken != true){
                     $url = route($source['route'], $model);
-                }
+                // }
 
                 $lewat = false;
                 $sesi = Carbon::createFromFormat('d/m/Y H:i:s', ($model->sesi));
