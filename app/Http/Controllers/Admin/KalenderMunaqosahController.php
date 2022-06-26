@@ -17,7 +17,7 @@ class KalenderMunaqosahController extends Controller
             'field'      => 'keterangan',
             'prefix'     => '',
             'suffix'     => '',
-            'route'      => 'admin.jadwal-munaqosah.edit',
+            'route'      => 'admin.jadwal-munaqosah.show',
         ],
     ];
 
