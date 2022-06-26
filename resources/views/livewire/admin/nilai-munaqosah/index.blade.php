@@ -15,12 +15,9 @@
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/Admin/ExcelExport.php')))
-                <livewire:admin.excel-export model="NilaiMunaqosah" format="csv" />
                 <livewire:admin.excel-export model="NilaiMunaqosah" format="xlsx" />
                 <livewire:admin.excel-export model="NilaiMunaqosah" format="pdf" />
             @endif
-
-
 
 
         </div>
@@ -47,6 +44,14 @@
                         <th>
                             {{ trans('cruds.nilaiMunaqosah.fields.user') }}
                             @include('components.table.sort', ['field' => 'user.name'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.angkatan_ppm') }}
+                            @include('components.table.sort', ['field' => 'user.angkatan_ppm'])
+                        </th>
+                        <th>
+                            {{ trans('cruds.user.fields.jenis_kelamin') }}
+                            @include('components.table.sort', ['field' => 'user.jenis_kelamin'])
                         </th>
                         <th>
                             {{ trans('cruds.nilaiMunaqosah.fields.jadwal_munaqosah') }}
@@ -108,6 +113,16 @@
                             <td>
                                 @if($nilaiMunaqosah->user)
                                     <span class="badge badge-relationship">{{ $nilaiMunaqosah->user->name ?? '' }}</span>
+                                @endif
+                            </td>
+                            <td>
+                                @if($nilaiMunaqosah->user)
+                                    {{ $nilaiMunaqosah->user->angkatan_ppm ?? '' }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($nilaiMunaqosah->user)
+                                    {{ $nilaiMunaqosah->user->jenis_kelamin_label }}
                                 @endif
                             </td>
                             <td>

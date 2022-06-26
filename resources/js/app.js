@@ -1,5 +1,7 @@
 require('./bootstrap');
 require('alpinejs');
+require('@popperjs/core')
+
 
 /* Sidebar - Side navigation menu on mobile/responsive mode */
 window.toggleNavbar = function (collapseID) {

@@ -51,9 +51,6 @@
         <div class="validation-message">
             {{ $errors->first('user.jenis_kelamin') }}
         </div>
-        <div class="help-block">
-            {{ trans('cruds.user.fields.jenis_kelamin_helper') }}
-        </div>
     </div>
     <div class="form-group {{ $errors->has('user.universitas') ? 'invalid' : '' }}">
         <label class="form-label" for="universitas">{{ trans('cruds.user.fields.universitas') }}</label>
@@ -125,46 +122,80 @@
             {{ trans('cruds.user.fields.kelompok_helper') }}
         </div>
     </div>
-    <div class="form-group {{ $errors->has('user.provinsi_id') ? 'invalid' : '' }}">
-        <label class="form-label required" for="provinsi">{{ trans('cruds.user.fields.provinsi') }}</label>
-        <x-select-list class="form-control" required id="provinsi" name="provinsi" :options="$this->listsForFields['provinsi']" wire:model="user.provinsi_id" />
-        <div class="validation-message">
-            {{ $errors->first('user.provinsi_id') }}
+    
+    
+    <div class="flex flex-row gap-x-4 mb-1">
+        <div class="flex-1">
+            <label class="block text-blueGray-600 font-medium text-sm mb-2">Provinsi</label>
+            <select wire:model="provinsi" class="select-box w-full mr-2" id="provinsi" name="provinsi">
+                <option value="" selected>Pilih provinsi</option>
+                @foreach($semuaProvinsi as $prov)
+                    <option value="{{ $prov->id }}">{{ $prov->name }}</option>
+                @endforeach
+            </select>
+            @error('provinsi')  
+            <div class="text-red-500">
+                <small>{{ $message }}</small>
+            </div>
+            @enderror
         </div>
-        <div class="help-block">
-            {{ trans('cruds.user.fields.provinsi_helper') }}
-        </div>
+
+        @if ($provinsi != null)
+            <div class="flex-1">
+                <label class="block text-blueGray-600 font-medium text-sm mb-2">Kota/Kabupaten</label>
+                <select wire:model="kabupaten" class="select-box w-full" id="kabupaten" name="kabupaten">
+                    <option value="" selected>Pilih kota/kabupaten</option>
+                    @foreach($semuaKabupaten as $kab)
+                        <option value="{{ $kab->id }}">{{ $kab->name }}</option>
+                    @endforeach
+                </select>
+                @error('kabupaten')
+                <div class="text-red-500">
+                    <small>{{ $message }}</small>
+                </div>
+                @enderror
+            </div>
+        @endif
     </div>
-    <div class="form-group {{ $errors->has('user.kabupaten_id') ? 'invalid' : '' }}">
-        <label class="form-label required" for="kabupaten">{{ trans('cruds.user.fields.kabupaten') }}</label>
-        <x-select-list class="form-control" required id="kabupaten" name="kabupaten" :options="$this->listsForFields['kabupaten']" wire:model="user.kabupaten_id" />
-        <div class="validation-message">
-            {{ $errors->first('user.kabupaten_id') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.user.fields.kabupaten_helper') }}
-        </div>
+
+    <div class="flex flex-row gap-x-4 mb-3">
+        @if ($kabupaten != null && $provinsi != null)
+            <div class="flex-1 mt-2">
+                <label class="block text-blueGray-600 font-medium text-sm mb-2">Kecamatan</label>
+                <select wire:model="kecamatan" class="select-box w-full mr-2" id="kecamatan" name="kecamatan">
+                    <option value="" selected>Pilih kecamatan</option>
+                    @foreach($semuaKecamatan as $kec)
+                        <option value="{{ $kec->id }}">{{ $kec->name }}</option>
+                    @endforeach
+                </select>
+                @error('kecamatan')
+                <div class="text-red-500">
+                    <small>{{ $message }}</small>
+                </div>
+                @enderror
+            </div>
+        @endif
+
+        @if ($kecamatan != null && $kabupaten != null && $provinsi != null)
+            <div class="flex-1 mt-2">
+                <label class="block text-blueGray-600 font-medium text-sm mb-2">Kelurahan</label>
+                <select wire:model="kelurahan" class="select-box w-full" id="kelurahan" name="kelurahan">
+                    <option value="" selected>Pilih kelurahan</option>
+                    @foreach($semuaKelurahan as $kel)
+                        <option value="{{ $kel->id }}">{{ $kel->name }}</option>
+                    @endforeach
+                </select>
+                @error('kelurahan')
+                <div class="text-red-500">
+                    <small>{{ $message }}</small>
+                </div>
+                @enderror
+            </div>
+        @endif
     </div>
-    <div class="form-group {{ $errors->has('user.kecamatan_id') ? 'invalid' : '' }}">
-        <label class="form-label required" for="kecamatan">{{ trans('cruds.user.fields.kecamatan') }}</label>
-        <x-select-list class="form-control" required id="kecamatan" name="kecamatan" :options="$this->listsForFields['kecamatan']" wire:model="user.kecamatan_id" />
-        <div class="validation-message">
-            {{ $errors->first('user.kecamatan_id') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.user.fields.kecamatan_helper') }}
-        </div>
-    </div>
-    <div class="form-group {{ $errors->has('user.kelurahan_id') ? 'invalid' : '' }}">
-        <label class="form-label required" for="kelurahan">{{ trans('cruds.user.fields.kelurahan') }}</label>
-        <x-select-list class="form-control" required id="kelurahan" name="kelurahan" :options="$this->listsForFields['kelurahan']" wire:model="user.kelurahan_id" />
-        <div class="validation-message">
-            {{ $errors->first('user.kelurahan_id') }}
-        </div>
-        <div class="help-block">
-            {{ trans('cruds.user.fields.kelurahan_helper') }}
-        </div>
-    </div>
+    
+
+
     <div class="form-group {{ $errors->has('user.alamat') ? 'invalid' : '' }}">
         <label class="form-label required" for="alamat">{{ trans('cruds.user.fields.alamat') }}</label>
         <input class="form-control" type="text" name="alamat" id="alamat" required wire:model.defer="user.alamat">

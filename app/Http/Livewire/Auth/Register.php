@@ -24,6 +24,7 @@ class Register extends Component
     public $kecamatan = null;
     public $kelurahan = null;
 
+    public $semuaJenisKelamin;
     public $semuaProvinsi;
     public $semuaKabupaten;
     public $semuaKecamatan;
@@ -48,6 +49,7 @@ class Register extends Component
     public function mount()
     {
         $this->user = new User();
+        $this->semuaJenisKelamin = $this->user::JENIS_KELAMIN_SELECT;
         $this->semuaProvinsi = Provinsi::all();
         $this->semuaKabupaten = collect();
         $this->semuaKecamatan = collect();
@@ -97,6 +99,10 @@ class Register extends Component
                 'email:rfc',
                 'required',
                 'unique:users,email',
+            ],
+            'user.jenis_kelamin' => [
+                'required',
+                'in:' . implode(',', array_keys($this->semuaJenisKelamin)),
             ],
             'user.universitas' => [
                 'string',

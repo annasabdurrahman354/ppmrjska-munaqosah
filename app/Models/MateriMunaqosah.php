@@ -15,10 +15,10 @@ class MateriMunaqosah extends Model
     use SoftDeletes;
 
     public const JENIS_SELECT = [
-        'quran'    => 'Al Quran',
-        'himpunan' => 'Himpunan',
-        'mk'       => 'Materi Kelas',
-        'lain'     => 'Materi Lain',
+        'Al Quran'      => 'Al Quran',
+        'Himpunan'      => 'Himpunan',
+        'Materi Kelas'  => 'Materi Kelas',
+        'Materi Kelas'  => 'Materi Kelas',
     ];
 
     public $table = 'materi_munaqosahs';
@@ -71,5 +71,15 @@ class MateriMunaqosah extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function jadwalMunaqosahs()
+    {
+        return $this->hasMany(JadwalMunaqosah::class);
+    }
+
+    public function plots()
+    {
+        return PlotMunaqosah::whereRelation('jadwalMunaqosah', 'materi_id', '=', $this->id);
     }
 }

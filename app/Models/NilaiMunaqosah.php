@@ -19,6 +19,8 @@ class NilaiMunaqosah extends Model
     public $orderable = [
         'id',
         'user.name',
+        'user.angkatan_ppm',
+        'user.jenis_kelamin',
         'jadwal_munaqosah.sesi',
         'materi_munaqosah.materi',
         'materi_munaqosah.keterangan',
@@ -35,6 +37,8 @@ class NilaiMunaqosah extends Model
     public $filterable = [
         'id',
         'user.name',
+        'user.angkatan_ppm',
+        'user.jenis_kelamin',
         'jadwal_munaqosah.sesi',
         'materi_munaqosah.materi',
         'materi_munaqosah.keterangan',

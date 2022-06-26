@@ -22,8 +22,8 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
     use SoftDeletes;
 
     public const JENIS_KELAMIN_SELECT = [
-        'l' => 'Laki-laki',
-        'p' => 'Perempuan',
+        'Laki-laki' => 'Laki-laki',
+        'Perempuan' => 'Perempuan',
     ];
 
     public const STATUS_SELECT = [
@@ -144,6 +144,11 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         return static::JENIS_KELAMIN_SELECT[$this->jenis_kelamin] ?? null;
     }
 
+    public function plots()
+    {
+        return $this->hasMany(PlotMunaqosah::class);
+    }
+
     public function provinsi()
     {
         return $this->belongsTo(Provinsi::class);
@@ -173,6 +178,12 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
     {
         return $value ? Carbon::createFromFormat('Y-m-d H:i:s', $value)->format(config('project.datetime_format')) : null;
     }
+
+    public function telahAmbilMateriMunaqosah($materi_id)
+    {
+        return $this->plots->where('materi_id', $materi_id)->isNotEmpty();
+    }
+
 
     public function setPasswordAttribute($input)
     {

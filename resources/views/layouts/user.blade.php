@@ -31,7 +31,6 @@
 			{{ csrf_field() }}
 		</form>
         @livewireScripts
-        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         @yield('scripts')
         @stack('scripts')

@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\User\Munaqosah;
+namespace App\Http\Livewire\Admin\MateriMunaqosah;
 
 use App\Http\Livewire\WithConfirmation;
 use App\Http\Livewire\WithSorting;
+use App\Models\JadwalMunaqosah;
+use App\Models\MateriMunaqosah;
 use App\Models\PlotMunaqosah;
-use App\Models\User;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Carbon\Carbon;
 
-class Index extends Component
+class Plot extends Component
 {
     use WithPagination;
     use WithSorting;
     use WithConfirmation;
 
-    public User $user;
+    public MateriMunaqosah $materiMunaqosah;
 
     public int $perPage;
 
@@ -49,19 +50,19 @@ class Index extends Component
         $this->resetPage();
     }
 
-    public function mount()
+    public function mount(MateriMunaqosah $materiMunaqosah)
     {
-        $this->user = auth()->user(); 
+        $this->materiMunaqosah   = $materiMunaqosah;
         $this->sortBy            = 'jadwal_munaqosah.sesi';
         $this->sortDirection     = 'asc';
-        $this->perPage           = 10;
+        $this->perPage           = 50;
         $this->paginationOptions = config('project.pagination.options');
         $this->orderable         = (new PlotMunaqosah())->orderable;
     }
 
     public function render()
     {
-        $query = PlotMunaqosah::with(['jadwalMunaqosah', 'user'])->whereRelation('user', 'id', $this->user->id)->advancedFilter([
+        $query = PlotMunaqosah::whereRelation('jadwalMunaqosah', 'materi_id', '=', $this->materiMunaqosah->id)->advancedFilter([
             's'               => $this->search ?: null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
@@ -69,12 +70,7 @@ class Index extends Component
 
         $plotMunaqosahs = $query->paginate($this->perPage);
 
-        return view('livewire.user.munaqosah.index', compact('plotMunaqosahs', 'query'));
+        return view('livewire.admin.materi-munaqosah.plot', compact('plotMunaqosahs', 'query'));
     }
 
-    public function delete(PlotMunaqosah $plotMunaqosah)
-    {
-        $plotMunaqosah->delete();
-        return redirect(request()->header('Referer'));
-    }
 }

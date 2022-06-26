@@ -5,7 +5,7 @@ namespace App\Http\Livewire\User\Munaqosah;
 use Livewire\Component;
 use App\Models\JadwalMunaqosah;
 use App\Models\User;
-
+use Carbon\Carbon;
 
 class KalenderMunaqosahAngkatan extends Component
 {
@@ -44,6 +44,8 @@ class KalenderMunaqosahAngkatan extends Component
                     $isFull = true;
                 }
 
+                
+
                 $isTaken = false;
                 if($this->user->telahAmbilMateriMunaqosah($model->materi->id)){
                     $isTaken = true;
@@ -54,6 +56,17 @@ class KalenderMunaqosahAngkatan extends Component
                     $url = route($source['route'], $model);
                 }
 
+                $lewat = false;
+                $sesi = Carbon::createFromFormat('d/m/Y H:i:s', ($model->sesi));
+                $sekarang = now();
+                if($sesi->lt($sekarang)){
+                    $lewat = true;
+                }
+
+                $color = 'blue';
+                if($isFull === true || $isTaken === true || $lewat){
+                    $color = 'red';
+                }
 
                 $events[] = [
                     'title' => sprintf(
@@ -62,10 +75,11 @@ class KalenderMunaqosahAngkatan extends Component
                         $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.')',
                         trim($source['suffix']),
                     ),
+                    'lewat' => $lewat,
                     'taken' => $isTaken,
-                    'full' => $isFull,
+                    'full'  => $isFull,
                     'start' => $crudFieldValue,
-                    'color'   => "yellow",
+                    'color' => $color,
                     'url'   => $url,
                 ];
             }

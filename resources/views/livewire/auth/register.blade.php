@@ -57,6 +57,22 @@
                                     </div>
                                 @enderror
                             </div>
+
+                            <div class="relative w-full mb-3">
+                                <label class="block text-blueGray-600 font-medium text-sm mb-2">Jenis Kelamin</label>
+                                <select wire:model="user.jenis_kelamin" class="select-box w-full mr-2" id="user.jenis_kelamin" name="user.jenis_kelamin">
+                                    <option value="" selected>Pilih jenis kelamin</option>
+                                    @foreach($semuaJenisKelamin as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                                @error('user.jenis_kelamin')  
+                                <div class="text-red-500">
+                                    <small>{{ $message }}</small>
+                                </div>
+                                @enderror
+                            </div>
+
                             <div class="relative w-full mb-3">
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Angkatan PPM

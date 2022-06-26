@@ -1,15 +1,4 @@
 <div>
-    <div class="card-controls sm:flex">
-        <div class="w-full sm:w-1/2">
-            Per page:
-            <select wire:model="perPage" class="form-select w-full sm:w-1/6">
-                @foreach($paginationOptions as $value)
-                    <option value="{{ $value }}">{{ $value }}</option>
-                @endforeach
-            </select>
-        </div>
-
-    </div>
     <div wire:loading.delay>
         Loading...
     </div>
@@ -19,50 +8,67 @@
             <table class="table table-index w-full">
                 <thead>
                     <tr>
+                        <th class="w-28">
+                            {{ trans('cruds.plotMunaqosah.fields.id') }}
+                            @include('components.table.sort', ['field' => 'id'])
+                        </th>
                         <th>
                             {{ trans('cruds.plotMunaqosah.fields.jadwal_munaqosah') }}
                             @include('components.table.sort', ['field' => 'jadwal_munaqosah.sesi'])
                         </th>
+
                         <th>
                             {{ trans('cruds.plotMunaqosah.fields.user') }}
                             @include('components.table.sort', ['field' => 'user.name'])
                         </th>
-                        
+
                         <th>
                             {{ trans('cruds.jadwalMunaqosah.fields.materi') }}
+                            @include('components.table.sort', ['field' => 'materi.materi'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.keterangan') }}
+                            @include('components.table.sort', ['field' => 'materi.keterangan'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.jenis') }}
+                            @include('components.table.sort', ['field' => 'materi.jenis'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
+                            @include('components.table.sort', ['field' => 'materi.angkatan'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.tahun_pelajaran') }}
+                            @include('components.table.sort', ['field' => 'materi.tahun_pelajaran'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.semester') }}
+                            @include('components.table.sort', ['field' => 'materi.semester'])
                         </th>
                         <th>
                             {{ trans('cruds.jadwalMunaqosah.fields.dewan_guru') }}
+                            @include('components.table.sort', ['field' => 'dewan_guru.name'])
                         </th>
 
-
+  
                         <th>
                         </th>
+                        
                     </tr>
                 </thead>
                 <tbody>
                     @forelse($plotMunaqosahs as $plotMunaqosah)
                         <tr>
                             <td>
+                                {{ $plotMunaqosah->id }}
+                            </td>
+                            <td>
                                 @if($plotMunaqosah->jadwalMunaqosah)
                                     <span class="badge badge-relationship">{{ $plotMunaqosah->jadwalMunaqosah->sesi ?? '' }}</span>
                                 @endif
                             </td>
+
                             <td>
                                 @if($plotMunaqosah->user)
                                     <span class="badge badge-relationship">{{ $plotMunaqosah->user->name ?? '' }}</span>
@@ -105,44 +111,66 @@
                                 @endif
                             </td>
 
-
-                            
                             <td>
                                 <div class="flex justify-end">
+                                    @can('plot_munaqosah_show')
+                                        <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.plot-munaqosah.show', $plotMunaqosah) }}">
+                                            {{ trans('global.view') }}
+                                        </a>
+                                    @endcan
+                                    @can('plot_munaqosah_edit')
+                                        <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.plot-munaqosah.edit', $plotMunaqosah) }}">
+                                            {{ trans('global.edit') }}
+                                        </a>
+                                    @endcan
                                     @can('plot_munaqosah_delete')
-                                    <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $plotMunaqosah->id }})" wire:loading.attr="disabled">
+                                        <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $plotMunaqosah->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
-                                    </button>
+                                        </button>
                                     @endcan
                                 </div>
                             </td>
+
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="10">No entries found.</td>
+                            <td colspan="10">Kuota sesi munaqosah masih kosong!</td>
                         </tr>
                     @endforelse
+
+                    @if(!$full)
+                        <tr>
+                            <td colspan="10" class="">Kuota sesi munaqosah masih ada!</td>
+                        </tr>
+                    @endif
+
+                    @if($full)
+                        <tr>
+                            <td colspan="10" class="">Kuota sesi munaqosah penuh!</td>
+                        </tr>
+                    @endif
+                    @if($lewat)
+                        <tr>
+                            <td colspan="10">Sesi munaqosah sudah lewat!</td>
+                        </tr>
+                    @endif
+
                 </tbody>
             </table>
         </div>
     </div>
 
     <div class="card-body">
-        <div class="pt-3">
-            {{ $plotMunaqosahs->links() }}
-        </div>
     </div>
 </div>
 
 @push('scripts')
     <script>
-Livewire.on('confirm', e => {
-    if (!confirm("Pastikan jadwal munaqosah belum terlaksana! Anda yakin?")) {
+        Livewire.on('confirm', e => {
+    if (!confirm("{{ trans('global.areYouSure') }}")) {
         return
     }
-    @this[e.callback](...e.argv)
+@this[e.callback](...e.argv)
 })
     </script>
 @endpush
-
-{{-- \Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $plotMunaqosah->jadwalMunaqosah->sesi)->gt(now()) --}}

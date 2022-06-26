@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\User\Munaqosah;
+namespace App\Http\Livewire\Admin\JadwalMunaqosah;
 
 use App\Http\Livewire\WithConfirmation;
 use App\Http\Livewire\WithSorting;
 use App\Models\JadwalMunaqosah;
 use App\Models\PlotMunaqosah;
-use App\Models\NilaiMunaqosah;
-use App\Models\User;
 use Illuminate\Http\Response;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -20,7 +18,6 @@ class Plot extends Component
     use WithConfirmation;
 
     public JadwalMunaqosah $jadwalMunaqosah;
-    public User $user;
 
     public int $perPage;
 
@@ -54,7 +51,6 @@ class Plot extends Component
 
     public function mount(JadwalMunaqosah $jadwalMunaqosah)
     {
-        $this->user = auth()->user();    
         $this->jadwalMunaqosah = $jadwalMunaqosah;
         $this->sortBy            = 'jadwal_munaqosah.sesi';
         $this->sortDirection     = 'asc';
@@ -65,19 +61,9 @@ class Plot extends Component
 
     public function render()
     {
-        $taken = false;
-        if($this->user->telahAmbilMateriMunaqosah($this->jadwalMunaqosah->materi->id)){
-            $taken = true;
-        }
-
         $full = false;
         if($this->jadwalMunaqosah->plots_count >= $this->jadwalMunaqosah->maks_santri){
             $full = true;
-        }
-
-        $angkatan = false;
-        if($this->jadwalMunaqosah->materi->angkatan === $this->user->angkatan_ppm){
-            $angkatan = true;
         }
 
         $lewat = false;
@@ -95,23 +81,13 @@ class Plot extends Component
 
         $plotMunaqosahs = $query->paginate($this->perPage);
 
-        return view('livewire.user.munaqosah.plot', compact('plotMunaqosahs', 'query', 'taken', 'full', 'angkatan', 'lewat'));
+        return view('livewire.admin.jadwal-munaqosah.plot', compact('plotMunaqosahs', 'query', 'full', 'lewat'));
     }
 
-    public function ambilJadwal()
+    public function delete(PlotMunaqosah $plotMunaqosah)
     {
+        abort_if(Gate::denies('plot_munaqosah_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $newJadwalMunaqosah = JadwalMunaqosah::where('id', $this->jadwalMunaqosah->id)->first();
-        if($newJadwalMunaqosah->plots_count >= $newJadwalMunaqosah->maks_santri){
-            return redirect(request()->header('Referer'));
-        }
-
-        $plotMunaqosah = PlotMunaqosah::create([
-            'jadwal_munaqosah_id' => $this->jadwalMunaqosah->id,
-            'user_id' => $this->user->id,
-        ]);
-        
-        $plotMunaqosah->save();
-        return redirect()->route('user.munaqosah.index');
+        $plotMunaqosah->delete();
     }
 }

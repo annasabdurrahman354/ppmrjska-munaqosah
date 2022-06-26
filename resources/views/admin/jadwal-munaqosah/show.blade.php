@@ -15,7 +15,7 @@
 
         <div class="card-body">
             <div class="pt-3">
-                <table class="table table-view">
+                <table class="table table-view w-full">
                     <tbody class="bg-white">
                         <tr>
                             <th>
@@ -38,7 +38,7 @@
                                 {{ trans('cruds.jadwalMunaqosah.fields.keterangan') }}
                             </th>
                             <td>
-                                {{ $jadwalMunaqosah->keterangan }}
+                                {{ $jadwalMunaqosah->materi->keterangan ?? '' }}
                             </td>
                         </tr>
                         <tr>
@@ -72,6 +72,11 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="mt-8">
+            @livewire('admin.jadwal-munaqosah.plot', [$jadwalMunaqosah])
+            </div>
+
             <div class="form-group">
                 @can('jadwal_munaqosah_edit')
                     <a href="{{ route('admin.jadwal-munaqosah.edit', $jadwalMunaqosah) }}" class="btn btn-indigo mr-2">

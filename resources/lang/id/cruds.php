@@ -95,6 +95,7 @@ return [
             'angkatan_ppm_helper'      => 'Tahun angkatan PPM',
             'angkatan_kuliah'          => 'Angkatan Kuliah',
             'angkatan_kuliah_helper'   => ' ',
+            'jenis_kelamin'            => 'Jenis Kelamin',
         ],
     ],
     'munaqosah' => [

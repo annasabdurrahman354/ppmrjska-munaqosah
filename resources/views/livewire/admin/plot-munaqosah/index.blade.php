@@ -15,7 +15,6 @@
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/Admin/ExcelExport.php')))
-                <livewire:admin.excel-export model="PlotMunaqosah" format="csv" />
                 <livewire:admin.excel-export model="PlotMunaqosah" format="xlsx" />
                 <livewire:admin.excel-export model="PlotMunaqosah" format="pdf" />
             @endif
@@ -64,9 +63,6 @@
                             @include('components.table.sort', ['field' => 'user.jenis_kelamin'])
                         </th>
 
-
-
-
                         <th>
                             {{ trans('cruds.jadwalMunaqosah.fields.materi') }}
                             @include('components.table.sort', ['field' => 'materi.materi'])
@@ -114,9 +110,9 @@
                                 {{ $plotMunaqosah->id }}
                             </td>
                             <td>
-                                @if($plotMunaqosah->jadwalMunaqosah)
-                                    <span class="badge badge-relationship">{{ $plotMunaqosah->jadwalMunaqosah->sesi ?? '' }}</span>
-                                @endif
+                                <a class="badge badge-relationship" href="{{ route('admin.jadwal-munaqosah.show', $plotMunaqosah->jadwalMunaqosah) }}">
+                                    {{ $plotMunaqosah->jadwalMunaqosah->sesi ?? '' }}
+                                </a>
                             </td>
 
                             <td>

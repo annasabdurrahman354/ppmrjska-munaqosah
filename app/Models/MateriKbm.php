@@ -15,10 +15,10 @@ class MateriKbm extends Model
     use SoftDeletes;
 
     public const JENIS_SELECT = [
-        'quran'    => 'Al Quran',
-        'himpunan' => 'Himpunan',
-        'mk'       => 'Materi Kelas',
-        'lain'     => 'Materi Lain',
+        'Al Quran'      => 'Al Quran',
+        'Himpunan'      => 'Himpunan',
+        'Materi Kelas'  => 'Materi Kelas',
+        'Materi Kelas'  => 'Materi Kelas',
     ];
 
     public $table = 'materi_kbms';

@@ -15,7 +15,6 @@
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="User" format="csv" />
                 <livewire:excel-export model="User" format="xlsx" />
                 <livewire:excel-export model="User" format="pdf" />
             @endif

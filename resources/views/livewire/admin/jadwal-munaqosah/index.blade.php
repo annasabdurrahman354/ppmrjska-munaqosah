@@ -14,14 +14,10 @@
                 </button>
             @endcan
 
-            @if(file_exists(app_path('Http/Livewire/ExcelExport.php')))
-                <livewire:excel-export model="JadwalMunaqosah" format="csv" />
-                <livewire:excel-export model="JadwalMunaqosah" format="xlsx" />
-                <livewire:excel-export model="JadwalMunaqosah" format="pdf" />
+            @if(file_exists(app_path('Http/Livewire/Admin/ExcelExport.php')))
+                <livewire:admin.excel-export model="JadwalMunaqosah" format="xlsx" />
+                <livewire:admin.excel-export model="JadwalMunaqosah" format="pdf" />
             @endif
-
-
-
 
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
@@ -81,6 +77,9 @@
                             @include('components.table.sort', ['field' => 'maks_santri'])
                         </th>
                         <th>
+                            Pendaftar
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -133,6 +132,9 @@
                             </td>
                             <td>
                                 {{ $jadwalMunaqosah->maks_santri }}
+                            </td>
+                            <td>
+                                {{ $jadwalMunaqosah->plots_count }}
                             </td>
                             <td>
                                 <div class="flex justify-end">

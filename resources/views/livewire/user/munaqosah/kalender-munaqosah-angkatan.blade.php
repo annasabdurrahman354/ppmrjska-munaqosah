@@ -34,12 +34,12 @@
                                 },
                 eventClick: function(info) {
                     info.jsEvent.preventDefault();
-                    alert(JSON.stringify(@json($events)))
+                   
                     if (info.event.extendedProps.taken) {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Oops...',
-                            text: 'Anda telah mengambil materi munaqosah ini!',
+                            title: 'Anda telah terjadwal materi munaqosah ini!',
+                            text: 'Hapus munaqosah materi yang sama jika belum terlaksana.',
                         })
                     }
 
@@ -50,6 +50,14 @@
                             text: 'Sesi munaqosah sudah penuh!',
                         })
                     }
+                    else if (info.event.extendedProps.lewat) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Sesi munaqosah sudah lewat!',
+                        })
+                    }
+
                     else{
                         Swal.fire({
                             title: 'Ambil Jadwal Munaqosah?',
@@ -60,7 +68,8 @@
                             confirmButtonText: 'Ambil'
                             }).then((result) => {
                                 if (result.isConfirmed) {
-                                    window.open(info.event.url)
+                       
+                                    window.open(info.event.url, "_self")
                                 }
                             })
                     }

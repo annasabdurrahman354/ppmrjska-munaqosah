@@ -15,7 +15,6 @@
             @endcan
 
             @if(file_exists(app_path('Http/Livewire/Admin/ExcelExport.php')))
-                <livewire:admin.excel-export model="MateriMunaqosah" format="csv" />
                 <livewire:admin.excel-export model="MateriMunaqosah" format="xlsx" />
                 <livewire:admin.excel-export model="MateriMunaqosah" format="pdf" />
             @endif
@@ -69,6 +68,9 @@
                             @include('components.table.sort', ['field' => 'semester'])
                         </th>
                         <th>
+                            Pendaftar
+                        </th>
+                        <th>
                         </th>
                     </tr>
                 </thead>
@@ -98,6 +100,9 @@
                             </td>
                             <td>
                                 {{ $materiMunaqosah->semester }}
+                            </td>
+                            <td>
+                                {{ $materiMunaqosah->plots()->count() }}
                             </td>
                             <td>
                                 <div class="flex justify-end">

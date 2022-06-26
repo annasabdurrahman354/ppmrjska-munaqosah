@@ -76,6 +76,11 @@
                     </tbody>
                 </table>
             </div>
+
+            <div class="mt-8">
+            @livewire('admin.materi-munaqosah.plot', [$materiMunaqosah])
+            </div>
+
             <div class="form-group">
                 @can('materi_munaqosah_edit')
                     <a href="{{ route('admin.materi-munaqosah.edit', $materiMunaqosah) }}" class="btn btn-indigo mr-2">

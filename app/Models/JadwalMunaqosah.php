@@ -91,4 +91,10 @@ class JadwalMunaqosah extends Model
     {
         return $this->hasMany(PlotMunaqosah::class);
     }
+
+    public function getPlotsCountAttribute()
+    {
+       return $this->hasMany(PlotMunaqosah::class)->count();
+   
+    }
 }
