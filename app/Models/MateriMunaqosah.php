@@ -58,7 +58,7 @@ class MateriMunaqosah extends Model
         'semester',
     ];
 
-    public function getFullMateriAttribute()
+    public function getMateriMunaqosahPluckAttribute()
     {
         return "{$this->materi} ({$this->angkatan})";
     }

@@ -28,7 +28,7 @@ class KalenderMunaqosahController extends Controller
         $events = [];
 
         foreach ($this->sources as $source) {
-            foreach ($source['model']::all() as $model) {
+            foreach ($source['model']::all()->sortBy('jadwal_munaqosah_kalender') as $model) {
                 $crudFieldValue = $model->getAttributes()[$source['date_field']];
 
                 if (!$crudFieldValue) {

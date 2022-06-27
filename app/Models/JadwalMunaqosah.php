@@ -57,9 +57,14 @@ class JadwalMunaqosah extends Model
         'maks_santri',
     ];
 
-    public function getFullJadwalAttribute()
+    public function getJadwalMunaqosahPluckAttribute()
     {
         return "{$this->sesi} - {$this->materi->materi} - {$this->dewanGuru->name} ({$this->materi->angkatan})";
+    }
+
+    public function getJadwalMunaqosahKalenderAttribute()
+    {
+        return "{$this->materi->angkatan} - {$this->materi->materi} ({$this->materi->keterangan})";
     }
 
     public function getSesiAttribute($value)

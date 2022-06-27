@@ -124,7 +124,7 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         return $this->roles()->where('title', 'Admin')->exists();
     }
 
-    public function getFullNamaAttribute()
+    public function getNamaPluckAttribute()
     {
         return "{$this->name} ({$this->angkatan_ppm})";
     }
