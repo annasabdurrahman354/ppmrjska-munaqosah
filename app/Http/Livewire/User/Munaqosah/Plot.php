@@ -22,18 +22,9 @@ class Plot extends Component
     public JadwalMunaqosah $jadwalMunaqosah;
     public User $user;
 
-    public int $perPage;
-
     public array $orderable;
 
-    public string $search = '';
-
-    public array $paginationOptions;
-
     protected $queryString = [
-        'search' => [
-            'except' => '',
-        ],
         'sortBy' => [
             'except' => 'jadwal_munaqosah.sesi',
         ],
@@ -42,24 +33,12 @@ class Plot extends Component
         ],
     ];
 
-    public function updatingSearch()
-    {
-        $this->resetPage();
-    }
-
-    public function updatingPerPage()
-    {
-        $this->resetPage();
-    }
-
     public function mount(JadwalMunaqosah $jadwalMunaqosah)
     {
         $this->user = auth()->user();    
         $this->jadwalMunaqosah = $jadwalMunaqosah;
         $this->sortBy            = 'jadwal_munaqosah.sesi';
         $this->sortDirection     = 'asc';
-        $this->perPage           = 50;
-        $this->paginationOptions = config('project.pagination.options');
         $this->orderable         = (new PlotMunaqosah())->orderable;
     }
 
@@ -88,12 +67,12 @@ class Plot extends Component
         }
 
         $query = PlotMunaqosah::with(['jadwalMunaqosah', 'user'])->where('jadwal_munaqosah_id', "=", $this->jadwalMunaqosah->id)->advancedFilter([
-            's'               => $this->search ?: null,
+            's'               => null,
             'order_column'    => $this->sortBy,
             'order_direction' => $this->sortDirection,
         ]);
 
-        $plotMunaqosahs = $query->paginate($this->perPage);
+        $plotMunaqosahs = $query->get();
 
         return view('livewire.user.munaqosah.plot', compact('plotMunaqosahs', 'query', 'taken', 'full', 'angkatan', 'lewat'));
     }

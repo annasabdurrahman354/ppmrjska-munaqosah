@@ -113,7 +113,7 @@
                         @empty
                         @if($angkatan)
                         <tr>
-                            <td colspan="10">Kuota sesi munaqosah masih kosong!</td>
+                            <td colspan="10">Sesi munaqosah masih kosong!</td>
                         </tr>
                         @endif
                     @endforelse
@@ -154,7 +154,6 @@
                 </button>
             </div>
             @endif
-            {{ $plotMunaqosahs->links() }}
         </div>
     </div>
 </div>

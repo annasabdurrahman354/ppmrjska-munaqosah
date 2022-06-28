@@ -134,7 +134,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="10">Kuota sesi munaqosah masih kosong!</td>
+                            <td colspan="10">Sesi munaqosah masih kosong!</td>
                         </tr>
                     @endforelse
 

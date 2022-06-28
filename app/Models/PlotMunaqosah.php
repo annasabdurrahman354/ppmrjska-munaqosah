@@ -48,6 +48,11 @@ class PlotMunaqosah extends Model
         return $this->belongsTo(JadwalMunaqosah::class);
     }
 
+    public function jadwal_munaqosah()
+    {
+        return $this->belongsTo(JadwalMunaqosah::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

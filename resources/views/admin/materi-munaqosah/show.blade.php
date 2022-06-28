@@ -76,9 +76,19 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="mt-8">
+            
+            <h6 class="card-title mt-8">
+                Sudah Terjadwal Munaqosah
+            </h6>
+            <div class="mt-4">
             @livewire('admin.materi-munaqosah.plot', [$materiMunaqosah])
+            </div>
+
+            <h6 class="card-title">
+                Belum Terjadwal Munaqosah
+            </h6>
+            <div class="mt-4">
+            @livewire('admin.materi-munaqosah.not-plot', [$materiMunaqosah])
             </div>
 
             <div class="form-group">

@@ -10,7 +10,6 @@
                     <tr>
                         <th class="w-28">
                             {{ trans('cruds.plotMunaqosah.fields.id') }}
-                            @include('components.table.sort', ['field' => 'id'])
                         </th>
                         <th>
                             {{ trans('cruds.plotMunaqosah.fields.jadwal_munaqosah') }}
@@ -24,31 +23,24 @@
 
                         <th>
                             {{ trans('cruds.jadwalMunaqosah.fields.materi') }}
-                            @include('components.table.sort', ['field' => 'materi.materi'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.keterangan') }}
-                            @include('components.table.sort', ['field' => 'materi.keterangan'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.jenis') }}
-                            @include('components.table.sort', ['field' => 'materi.jenis'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
-                            @include('components.table.sort', ['field' => 'materi.angkatan'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.tahun_pelajaran') }}
-                            @include('components.table.sort', ['field' => 'materi.tahun_pelajaran'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.semester') }}
-                            @include('components.table.sort', ['field' => 'materi.semester'])
                         </th>
                         <th>
                             {{ trans('cruds.jadwalMunaqosah.fields.dewan_guru') }}
-                            @include('components.table.sort', ['field' => 'dewan_guru.name'])
                         </th>
                         <th>
                         </th>
@@ -113,7 +105,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="10">Kuota sesi munaqosah masih kosong!</td>
+                            <td colspan="10">Sesi munaqosah masih kosong!</td>
                         </tr>
                     @endforelse
 
@@ -125,14 +117,3 @@
     <div class="card-body">
     </div>
 </div>
-
-@push('scripts')
-    <script>
-        Livewire.on('confirm', e => {
-    if (!confirm("{{ trans('global.areYouSure') }}")) {
-        return
-    }
-@this[e.callback](...e.argv)
-})
-    </script>
-@endpush

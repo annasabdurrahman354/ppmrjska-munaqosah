@@ -32,7 +32,7 @@ class KalenderMunaqosahAngkatan extends Component
         $events = [];
 
         foreach ($this->sources as $source) {
-            foreach ($source['model']::with('materi')->withCount('plots')->whereRelation('materi', 'angkatan', $this->user->angkatan_ppm)->sortBy('jadwal_munaqosah_kalender')->get() as $model) {
+            foreach ($source['model']::with('materi')->withCount('plots')->whereRelation('materi', 'angkatan', $this->user->angkatan_ppm)->get()->sortBy('jadwal_munaqosah_kalender') as $model) {
                 $crudFieldValue = $model->getAttributes()[$source['date_field']];
 
                 if (!$crudFieldValue) {
