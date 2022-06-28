@@ -22,8 +22,8 @@
         <div class="font-sans text-gray-900 antialiased">
             @include('components.navbar-user')
             @yield('header')
-            <div class="min-w-full border-b border-b-4 shadow"></div>
-            <div class="sm:items-center px-10 py-10">
+            <div class="min-w-full border-b-4 shadow"></div>
+            <div class="sm:items-center px-1 py-4 sm:px-8 sm:py-8">
                 @yield('content')
             </div>
         </div>

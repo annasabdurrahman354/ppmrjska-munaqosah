@@ -25,19 +25,57 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/locales/id.js'></script>
 
     <script type="text/javascript">
+        function displayWindowSize(){
+            var isBigScreen = $(window).width() > 900;
+            if(isBigScreen){
+                $(".fc-today-button").show();
+                $(".fc-dayGridWeek-button").show();
+                $(".fc-dayGridMonth-button").show();
+            }else{
+                $(".fc-today-button").hide();
+                $(".fc-dayGridWeek-button").hide();
+                $(".fc-dayGridMonth-button").hide();
+            }
+        }
+        // Attaching the event listener function to window's resize event
+        window.addEventListener("resize", displayWindowSize);
         document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    locale: "id",
-    events: @json($events),
-    initialView: 'dayGridMonth',
-    headerToolbar: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-                    },
-  });
-  calendar.render();
-});
+            function mobileCheck() {
+                if (window.innerWidth >= 900 ) {
+                    return false;
+                } else {
+                    return true;
+                }
+            };
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: "id",
+                events: @json($events),
+                initialView: mobileCheck() ? "listWeek" : 'dayGridMonth',
+                headerToolbar: {
+                                    left: 'prev,next today',
+                                    center: 'title',
+                                    right: 'dayGridMonth,dayGridWeek,listWeek'
+                                },
+                windowResize: function(view) {
+                        if (window.innerWidth >= 900 ) {
+                            calendar.changeView('dayGridMonth');
+                        } else {
+                            calendar.changeView('listWeek');
+                        }
+                },   
+            });
+            calendar.render();
+            var isBigScreen = $(window).width() > 900;
+            if(isBigScreen){
+                $(".fc-today-button").show();
+                $(".fc-dayGridWeek-button").show();
+                $(".fc-dayGridMonth-button").show();
+            }else{
+                $(".fc-today-button").hide();
+                $(".fc-dayGridWeek-button").hide();
+                $(".fc-dayGridMonth-button").hide();
+            }
+        });
     </script>
 @endpush
