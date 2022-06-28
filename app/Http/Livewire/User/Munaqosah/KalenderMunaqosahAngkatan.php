@@ -44,8 +44,6 @@ class KalenderMunaqosahAngkatan extends Component
                     $isFull = true;
                 }
 
-                
-
                 $isTaken = false;
                 if($this->user->telahAmbilMateriMunaqosah($model->materi->id)){
                     $isTaken = true;
@@ -56,6 +54,11 @@ class KalenderMunaqosahAngkatan extends Component
                     $url = route($source['route'], $model);
                 // }
 
+                $tabrakan = false;
+                if($this->user->telahAmbilSesiMunaqosah($model->sesi)){
+                    $tabrakan = true;
+                }
+
                 $lewat = false;
                 $sesi = Carbon::createFromFormat('d/m/Y H:i:s', ($model->sesi));
                 $sekarang = now();
@@ -64,7 +67,7 @@ class KalenderMunaqosahAngkatan extends Component
                 }
 
                 $color = 'blue';
-                if($isFull === true || $isTaken === true || $lewat){
+                if($isFull || $isTaken || $lewat || $tabrakan){
                     $color = 'red';
                 }
 
@@ -75,9 +78,10 @@ class KalenderMunaqosahAngkatan extends Component
                         $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.')',
                         trim($source['suffix']),
                     ),
-                    'lewat' => $lewat,
                     'taken' => $isTaken,
                     'full'  => $isFull,
+                    'lewat' => $lewat,
+                    'tabrakan' => $tabrakan,
                     'start' => $crudFieldValue,
                     'color' => $color,
                     'url'   => $url,

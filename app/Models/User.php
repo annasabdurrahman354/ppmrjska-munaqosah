@@ -184,6 +184,10 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         return $this->plots->where('materi_id', $materi_id)->isNotEmpty();
     }
 
+    public function telahAmbilSesiMunaqosah($sesi)
+    {
+        return $this->plots->where('jadwal_munaqosah.sesi', $sesi)->isNotEmpty();
+    }
 
     public function setPasswordAttribute($input)
     {

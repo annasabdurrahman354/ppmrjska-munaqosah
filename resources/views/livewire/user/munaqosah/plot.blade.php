@@ -69,7 +69,11 @@
 
                             <td>
                                 @if($plotMunaqosah->user)
-                                    <span class="badge badge-relationship">{{ $plotMunaqosah->user->name ?? '' }}</span>
+                                @if ($plotMunaqosah->user->id === auth()->user()->id)
+                                <span class="badge badge-own-relationship">{{ 'ANDA' ?? '' }}</span>
+                                @else
+                                <span class="badge badge-relationship">{{ $plotMunaqosah->user->name ?? '' }}</span>
+                                @endif
                                 @endif
                             </td>
 
@@ -139,6 +143,11 @@
                                 <td colspan="10">Sesi munaqosah sudah lewat!</td>
                             </tr>
                         @endif
+                        @if($tabrakan)
+                            <tr>
+                                <td colspan="10" class="">Anda telah memiliki jadwal munaqosah lain di sesi ini!</td>
+                            </tr>
+                        @endif
                     @endif
                 </tbody>
             </table>
@@ -147,7 +156,7 @@
 
     <div class="card-body">
         <div class="pt-3">
-            @if(!$taken && !$full && !$lewat && $angkatan)
+            @if(!$taken && !$full && !$lewat && !$tabrakan && $angkatan)
             <div class="text-center mt-6">
                 <button wire:click="ambilJadwal" class="md:w-1/4 bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                     Ambil Jadwal Munaqosah

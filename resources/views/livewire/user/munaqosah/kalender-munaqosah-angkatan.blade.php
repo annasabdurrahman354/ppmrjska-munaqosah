@@ -72,7 +72,23 @@
                 eventClick: function(info) {
                     info.jsEvent.preventDefault();
                    
-                    if (info.event.extendedProps.taken) {
+                    if (info.event.extendedProps.lewat) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Sesi munaqosah sudah lewat!',
+                        })
+                    }
+
+                    else if (info.event.extendedProps.full) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Sesi munaqosah sudah penuh!',
+                        })
+                    }
+
+                    else if (info.event.extendedProps.taken) {
                         Swal.fire({
                             icon: 'error',
                             title: 'Anda telah terjadwal materi munaqosah ini!',
@@ -88,19 +104,20 @@
                             })
                     }
 
-                    else if (info.event.extendedProps.full) {
+                    else if (info.event.extendedProps.tabrakan) {
                         Swal.fire({
                             icon: 'error',
-                            title: 'Oops...',
-                            text: 'Sesi munaqosah sudah penuh!',
-                        })
-                    }
-                    else if (info.event.extendedProps.lewat) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Oops...',
-                            text: 'Sesi munaqosah sudah lewat!',
-                        })
+                            title: 'Anda memiliki munaqosah lain di waktu ini!',
+                            text: 'Ingin melihat daftar santri sesi ini?',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Lihat'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.open(info.event.url, "_self")
+                                }
+                            })
                     }
 
                     else{

@@ -59,6 +59,11 @@ class Plot extends Component
             $angkatan = true;
         }
 
+        $tabrakan = false;
+        if($this->user->telahAmbilSesiMunaqosah($this->jadwalMunaqosah->sesi)){
+            $tabrakan = true;
+        }
+
         $lewat = false;
         $sesi = Carbon::createFromFormat('d/m/Y H:i:s', ($this->jadwalMunaqosah->sesi));
         $sekarang = now();
@@ -74,7 +79,7 @@ class Plot extends Component
 
         $plotMunaqosahs = $query->get();
 
-        return view('livewire.user.munaqosah.plot', compact('plotMunaqosahs', 'query', 'taken', 'full', 'angkatan', 'lewat'));
+        return view('livewire.user.munaqosah.plot', compact('plotMunaqosahs', 'query', 'taken', 'full', 'angkatan', 'lewat', 'tabrakan'));
     }
 
     public function ambilJadwal()
