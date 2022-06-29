@@ -75,7 +75,7 @@ class KalenderMunaqosahAngkatan extends Component
                     'title' => sprintf(
                         '%s %s %s',
                         trim($source['prefix']),
-                        $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.')',
+                        $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.') - '.$model->dewanGuru->name,
                         trim($source['suffix']),
                     ),
                     'taken' => $isTaken,
