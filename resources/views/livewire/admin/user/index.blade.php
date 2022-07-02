@@ -100,14 +100,6 @@
                             @include('components.table.sort', ['field' => 'kabupaten.name'])
                         </th>
                         <th>
-                            {{ trans('cruds.user.fields.kecamatan') }}
-                            @include('components.table.sort', ['field' => 'kecamatan.name'])
-                        </th>
-                        <th>
-                            {{ trans('cruds.user.fields.kelurahan') }}
-                            @include('components.table.sort', ['field' => 'kelurahan.name'])
-                        </th>
-                        <th>
                             {{ trans('cruds.user.fields.alamat') }}
                             @include('components.table.sort', ['field' => 'alamat'])
                         </th>
@@ -187,16 +179,6 @@
                             <td>
                                 @if($user->kabupaten)
                                     <span class="badge badge-relationship">{{ $user->kabupaten->name ?? '' }}</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($user->kecamatan)
-                                    <span class="badge badge-relationship">{{ $user->kecamatan->name ?? '' }}</span>
-                                @endif
-                            </td>
-                            <td>
-                                @if($user->kelurahan)
-                                    <span class="badge badge-relationship">{{ $user->kelurahan->name ?? '' }}</span>
                                 @endif
                             </td>
                             <td>

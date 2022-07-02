@@ -147,26 +147,6 @@
                         </tr>
                         <tr>
                             <th>
-                                {{ trans('cruds.user.fields.kecamatan') }}
-                            </th>
-                            <td>
-                                @if($user->kecamatan)
-                                    <span class="badge badge-relationship">{{ $user->kecamatan->name ?? '' }}</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
-                                {{ trans('cruds.user.fields.kelurahan') }}
-                            </th>
-                            <td>
-                                @if($user->kelurahan)
-                                    <span class="badge badge-relationship">{{ $user->kelurahan->name ?? '' }}</span>
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>
                                 {{ trans('cruds.user.fields.alamat') }}
                             </th>
                             <td>

@@ -123,7 +123,6 @@
         </div>
     </div>
     
-    
     <div class="flex flex-row gap-x-4 mb-1">
         <div class="flex-1">
             <label class="block text-blueGray-600 font-medium text-sm mb-2">Provinsi</label>
@@ -157,44 +156,6 @@
             </div>
         @endif
     </div>
-
-    <div class="flex flex-row gap-x-4 mb-3">
-        @if ($kabupaten != null && $provinsi != null)
-            <div class="flex-1 mt-2">
-                <label class="block text-blueGray-600 font-medium text-sm mb-2">Kecamatan</label>
-                <select wire:model="kecamatan" class="select-box w-full mr-2" id="kecamatan" name="kecamatan">
-                    <option value="" selected>Pilih kecamatan</option>
-                    @foreach($semuaKecamatan as $kec)
-                        <option value="{{ $kec->id }}">{{ $kec->name }}</option>
-                    @endforeach
-                </select>
-                @error('kecamatan')
-                <div class="text-red-500">
-                    <small>{{ $message }}</small>
-                </div>
-                @enderror
-            </div>
-        @endif
-
-        @if ($kecamatan != null && $kabupaten != null && $provinsi != null)
-            <div class="flex-1 mt-2">
-                <label class="block text-blueGray-600 font-medium text-sm mb-2">Kelurahan</label>
-                <select wire:model="kelurahan" class="select-box w-full" id="kelurahan" name="kelurahan">
-                    <option value="" selected>Pilih kelurahan</option>
-                    @foreach($semuaKelurahan as $kel)
-                        <option value="{{ $kel->id }}">{{ $kel->name }}</option>
-                    @endforeach
-                </select>
-                @error('kelurahan')
-                <div class="text-red-500">
-                    <small>{{ $message }}</small>
-                </div>
-                @enderror
-            </div>
-        @endif
-    </div>
-    
-
 
     <div class="form-group {{ $errors->has('user.alamat') ? 'invalid' : '' }}">
         <label class="form-label required" for="alamat">{{ trans('cruds.user.fields.alamat') }}</label>

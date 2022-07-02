@@ -51,8 +51,6 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         'kelompok',
         'provinsi.name',
         'kabupaten.name',
-        'kecamatan.name',
-        'kelurahan.name',
         'alamat',
         'status',
         'email_verified_at',
@@ -75,8 +73,6 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         'kelompok',
         'provinsi.name',
         'kabupaten.name',
-        'kecamatan.name',
-        'kelurahan.name',
         'alamat',
         'status',
         'email_verified_at',
@@ -111,8 +107,6 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
         'kelompok',
         'provinsi_id',
         'kabupaten_id',
-        'kecamatan_id',
-        'kelurahan_id',
         'alamat',
         'status',
         'password',
@@ -157,16 +151,6 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
     public function kabupaten()
     {
         return $this->belongsTo(Kabupaten::class);
-    }
-
-    public function kecamatan()
-    {
-        return $this->belongsTo(Kecamatan::class);
-    }
-
-    public function kelurahan()
-    {
-        return $this->belongsTo(Kelurahan::class);
     }
 
     public function getStatusLabelAttribute($value)
