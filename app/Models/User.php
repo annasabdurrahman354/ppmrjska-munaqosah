@@ -189,4 +189,15 @@ class User extends Authenticatable implements HasLocalePreference //,MustVerifyE
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    protected static function boot() 
+    {
+        parent::boot();
+
+        static::deleting(function($user) {
+            foreach ($user->plots()->get() as $plot) {
+                $plot->delete();
+            }
+        });
+    }
 }

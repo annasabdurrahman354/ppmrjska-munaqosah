@@ -102,4 +102,15 @@ class JadwalMunaqosah extends Model
        return $this->hasMany(PlotMunaqosah::class)->count();
    
     }
+
+    protected static function boot() 
+    {
+        parent::boot();
+
+        static::deleting(function($jadwalMunaqosah) {
+            foreach ($jadwalMunaqosah->plots()->get() as $plot) {
+                $plot->delete();
+            }
+        });
+    }
 }
