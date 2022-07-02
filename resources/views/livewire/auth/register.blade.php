@@ -17,7 +17,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Nama
                                 </label>
-                                <input wire:model="user.name" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.name') ? ' ring ring-red-300' : '' }}" placeholder="Nama" required autofocus autocomplete="name"/>
+                                <input wire:model.lazy="user.name" type="text" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.name') ? ' ring ring-red-300' : '' }}" placeholder="Nama" required autofocus autocomplete="name"/>
                                 @error('user.name')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -28,7 +28,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Nomor Induk Santri
                                 </label>
-                                <input wire:model="user.nis" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.nis') ? ' ring ring-red-300' : '' }}" placeholder="Nomor induk santri" required/>
+                                <input wire:model.lazy="user.nis" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.nis') ? ' ring ring-red-300' : '' }}" placeholder="Nomor induk santri" required/>
                                 @error('user.nis')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -39,7 +39,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Nomor Telepon
                                 </label>
-                                <input wire:model="user.telepon" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.telepon') ? ' ring ring-red-300' : '' }}" placeholder="Nomor telepon dan WhatsApp" required/>
+                                <input wire:model.lazy="user.telepon" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.telepon') ? ' ring ring-red-300' : '' }}" placeholder="Nomor telepon dan WhatsApp" required/>
                                 @error('user.telepon')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -50,7 +50,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     {{ __('global.login_email') }}
                                 </label>
-                                <input wire:model="user.email" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.email') ? ' ring ring-red-300' : '' }}" placeholder="Email" required autocomplete="email"/>
+                                <input wire:model.lazy="user.email" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.email') ? ' ring ring-red-300' : '' }}" placeholder="Email" required autocomplete="email"/>
                                 @error('user.email')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -77,7 +77,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Angkatan PPM
                                 </label>
-                                <input wire:model="user.angkatan_ppm" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.angkatan_ppm') ? ' ring ring-red-300' : '' }}" placeholder="Angkatan PPM" required/>
+                                <input wire:model.lazy="user.angkatan_ppm" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.angkatan_ppm') ? ' ring ring-red-300' : '' }}" placeholder="Angkatan PPM" required/>
                                 @error('user.angkatan_ppm')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -88,7 +88,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Password
                                 </label>
-                                <input wire:model="password" type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('password') ? ' ring ring-red-300' : '' }}" placeholder="Password" required autocomplete="new-password" />
+                                <input wire:model.lazy="password" type="password" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('password') ? ' ring ring-red-300' : '' }}" placeholder="Password" required autocomplete="new-password" />
                                 @error('password')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -124,7 +124,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Universitas
                                 </label>
-                                <input wire:model="user.universitas" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.universitas') ? ' ring ring-red-300' : '' }}" placeholder="Universitas" required/>
+                                <input wire:model.lazy="user.universitas" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.universitas') ? ' ring ring-red-300' : '' }}" placeholder="Universitas" required/>
                                 @error('user.universitas')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -134,7 +134,7 @@
                             <div class="flex flex-row gap-x-4 mb-2">
                                 <div class="flex-1">
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">Program Studi</label>
-                                    <input wire:model="user.prodi" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.prodi') ? ' ring ring-red-300' : '' }}" placeholder="Program studi" required/>
+                                    <input wire:model.lazy="user.prodi" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.prodi') ? ' ring ring-red-300' : '' }}" placeholder="Program studi" required/>
                                     <div class="help-block text-xs">
                                         Contoh: S1 Informatika
                                     </div>
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="flex-2 ml-2">
                                     <label class="block text-blueGray-600 font-medium text-sm mb-2">Angkatan Kuliah</label>
-                                    <input wire:model="user.angkatan_kuliah" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.angkatan_kuliah') ? ' ring ring-red-300' : '' }}" placeholder="Angkatan kuliah" required/>
+                                    <input wire:model.lazy="user.angkatan_kuliah" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.angkatan_kuliah') ? ' ring ring-red-300' : '' }}" placeholder="Angkatan kuliah" required/>
                                     @error('user.angkatan_kuliah')
                                         <div class="text-red-500">
                                             <small>{{ $message }}</small>
@@ -192,7 +192,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Asal Daerah
                                 </label>
-                                <input wire:model="user.daerah" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.daerah') ? ' ring ring-red-300' : '' }}" placeholder="Asal daerah" required/>
+                                <input wire:model.lazy="user.daerah" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.daerah') ? ' ring ring-red-300' : '' }}" placeholder="Asal daerah" required/>
                                 @error('user.daerah')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -204,7 +204,7 @@
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2">
                                     Asal Desa
                                 </label>
-                                <input wire:model="user.desa" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.desa') ? ' ring ring-red-300' : '' }}" placeholder="Asal desa" required/>
+                                <input wire:model.lazy="user.desa" class="form-control border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('user.desa') ? ' ring ring-red-300' : '' }}" placeholder="Asal desa" required/>
                                 @error('user.desa')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
