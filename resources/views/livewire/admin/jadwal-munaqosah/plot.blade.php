@@ -113,6 +113,9 @@
 
                             <td>
                                 <div class="flex justify-end">
+                                        <a class="btn btn-sm btn-success mr-2" href="{{ $plotMunaqosah->user->ingatkanMunaqosah($plotMunaqosah->jadwalMunaqosah) }}">
+                                            Ingatkan
+                                        </a>
                                     @can('plot_munaqosah_show')
                                         <a class="btn btn-sm btn-info mr-2" href="{{ route('admin.plot-munaqosah.show', $plotMunaqosah) }}">
                                             {{ trans('global.view') }}
