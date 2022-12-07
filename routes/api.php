@@ -26,20 +26,11 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'middleware' => ['auth:sanctum']
     // Kabupaten
     Route::apiResource('kabupatens', KabupatenApiController::class);
 
-    // Kecamatan
-    Route::apiResource('kecamatans', KecamatanApiController::class);
-
-    // Kelurahan
-    Route::apiResource('kelurahans', KelurahanApiController::class);
-
     // Jadwal Munaqosah
     Route::apiResource('jadwal-munaqosah', JadwalMunaqosahApiController::class);
 
     // Dewan Guru
     Route::apiResource('dewan-guru', DewanGuruApiController::class);
-
-    // Materi Kbm
-    Route::apiResource('materi-kbm', MateriKbmApiController::class);
 
     // Plot Munaqosah
     Route::apiResource('plot-munaqosah', PlotMunaqosahApiController::class);

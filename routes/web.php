@@ -56,20 +56,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     // Kabupaten
     Route::resource('kabupatens', KabupatenController::class, ['except' => ['store', 'update', 'destroy']]);
 
-    // Kecamatan
-    Route::resource('kecamatans', KecamatanController::class, ['except' => ['store', 'update', 'destroy']]);
-
-    // Kelurahan
-    Route::resource('kelurahans', KelurahanController::class, ['except' => ['store', 'update', 'destroy']]);
-
     // Jadwal Munaqosah
     Route::resource('jadwal-munaqosah', JadwalMunaqosahController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Dewan Guru
     Route::resource('dewan-guru', DewanGuruController::class, ['except' => ['store', 'update', 'destroy']]);
-
-    // Materi Kbm
-    Route::resource('materi-kbm', MateriKbmController::class, ['except' => ['store', 'update', 'destroy']]);
 
     // Plot Munaqosah
     Route::resource('plot-munaqosah', PlotMunaqosahController::class, ['except' => ['store', 'update', 'destroy']]);

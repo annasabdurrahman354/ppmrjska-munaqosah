@@ -88,26 +88,6 @@
                         </ul>
                     </li>
                 @endcan
-                @can('kbm_access')
-                    <li class="items-center">
-                        <a class="has-sub {{ request()->is("admin/materi-kbm*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
-                            <i class="fa-fw fas c-sidebar-nav-icon fa-chalkboard-teacher">
-                            </i>
-                            {{ trans('cruds.kbm.title') }}
-                        </a>
-                        <ul class="ml-4 subnav hidden">
-                            @can('materi_kbm_access')
-                                <li class="items-center">
-                                    <a class="{{ request()->is("admin/materi-kbm*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.materi-kbm.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-book-open">
-                                        </i>
-                                        {{ trans('cruds.materiKbm.title') }}
-                                    </a>
-                                </li>
-                            @endcan
-                        </ul>
-                    </li>
-                @endcan
                 @can('munaqosah_access')
                     <li class="items-center">
                         <a class="has-sub {{ request()->is("admin/jadwal-munaqosah*")||request()->is("admin/plot-munaqosah*")||request()->is("admin/nilai-munaqosah*")||request()->is("admin/materi-munaqosah*")||request()->is("admin/kalender-munaqosah*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
@@ -187,24 +167,6 @@
                                         <i class="fa-fw c-sidebar-nav-icon fas fa-globe-asia">
                                         </i>
                                         {{ trans('cruds.kabupaten.title') }}
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('kecamatan_access')
-                                <li class="items-center">
-                                    <a class="{{ request()->is("admin/kecamatans*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.kecamatans.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-globe-asia">
-                                        </i>
-                                        {{ trans('cruds.kecamatan.title') }}
-                                    </a>
-                                </li>
-                            @endcan
-                            @can('kelurahan_access')
-                                <li class="items-center">
-                                    <a class="{{ request()->is("admin/kelurahans*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="{{ route("admin.kelurahans.index") }}">
-                                        <i class="fa-fw c-sidebar-nav-icon fas fa-globe-asia">
-                                        </i>
-                                        {{ trans('cruds.kelurahan.title') }}
                                     </a>
                                 </li>
                             @endcan
