@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'PPM RJSKA',
+    'site_title' => 'PPM Roudlotul Jannah',
 ];
