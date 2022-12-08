@@ -35,8 +35,8 @@
                             @include('components.table.sort', ['field' => 'materi.jenis'])
                         </th>
                         <th>
-                            {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
-                            @include('components.table.sort', ['field' => 'materi.angkatan'])
+                            {{ trans('cruds.materiMunaqosah.fields.hafalan') }}
+                            @include('components.table.sort', ['field' => 'materi.hafalan'])
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.tahun_pelajaran') }}
@@ -94,7 +94,7 @@
                             </td>
                             <td>
                                 @if($plotMunaqosah->jadwalMunaqosah->materi)
-                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->angkatan ?? '' }}
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->hafalan }}
                                 @endif
                             </td>
                             <td>

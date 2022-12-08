@@ -46,6 +46,10 @@ class Edit extends Component
                 'string',
                 'required',
             ],
+            'materiMunaqosah.hafalan' => [
+                'string',
+                'required',
+            ],
             'materiMunaqosah.angkatan' => [
                 'integer',
                 'min:-2147483648',

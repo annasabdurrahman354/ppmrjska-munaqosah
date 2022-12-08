@@ -35,6 +35,16 @@
             {{ trans('cruds.materiMunaqosah.fields.keterangan_helper') }}
         </div>
     </div>
+    <div class="form-group {{ $errors->has('materiMunaqosah.hafalan') ? 'invalid' : '' }}">
+        <label class="form-label required" for="hafalan">{{ trans('cruds.materiMunaqosah.fields.hafalan') }}</label>
+        <input class="form-control" type="text" name="hafalan" id="hafalan" required wire:model.defer="materiMunaqosah.hafalan">
+        <div class="validation-message">
+            {{ $errors->first('materiMunaqosah.hafalan') }}
+        </div>
+        <div class="help-block">
+            {{ trans('cruds.materiMunaqosah.fields.hafalan_helper') }}
+        </div>
+    </div>
     <div class="form-group {{ $errors->has('materiMunaqosah.angkatan') ? 'invalid' : '' }}">
         <label class="form-label required" for="angkatan">{{ trans('cruds.materiMunaqosah.fields.angkatan') }}</label>
         <input class="form-control" type="number" name="angkatan" id="angkatan" required wire:model.defer="materiMunaqosah.angkatan" step="1">

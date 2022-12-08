@@ -56,6 +56,10 @@
                             @include('components.table.sort', ['field' => 'keterangan'])
                         </th>
                         <th>
+                            {{ trans('cruds.materiMunaqosah.fields.hafalan') }}
+                            @include('components.table.sort', ['field' => 'hafalan'])
+                        </th>
+                        <th>
                             {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
                             @include('components.table.sort', ['field' => 'angkatan'])
                         </th>
@@ -91,6 +95,9 @@
                             </td>
                             <td>
                                 {{ $materiMunaqosah->keterangan }}
+                            </td>
+                            <td>
+                                {{ $materiMunaqosah->hafalan }}
                             </td>
                             <td>
                                 {{ $materiMunaqosah->angkatan }}

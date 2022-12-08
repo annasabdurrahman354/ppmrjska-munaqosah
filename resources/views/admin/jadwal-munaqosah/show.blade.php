@@ -53,6 +53,14 @@
                         </tr>
                         <tr>
                             <th>
+                                Hafalan
+                            </th>
+                            <td>
+                                {{ $jadwalMunaqosah->materi->hafalan ?? '' }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.jadwalMunaqosah.fields.dewan_guru') }}
                             </th>
                             <td>

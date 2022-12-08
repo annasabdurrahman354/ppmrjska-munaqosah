@@ -51,6 +51,14 @@
                         </tr>
                         <tr>
                             <th>
+                                {{ trans('cruds.materiMunaqosah.fields.hafalan') }}
+                            </th>
+                            <td>
+                                {{ $materiMunaqosah->hafalan }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
                                 {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
                             </th>
                             <td>

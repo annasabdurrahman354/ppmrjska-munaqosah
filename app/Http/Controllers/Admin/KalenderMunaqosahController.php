@@ -35,11 +35,20 @@ class KalenderMunaqosahController extends Controller
                     continue;
                 }
 
+                $materi = "";
+
+                if($model->materi->hafalan == Null){
+                    $materi = $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.') - '.$model->dewanGuru->name;
+                }
+                else {
+                    $materi =  $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.') & '.$model->materi->hafalan.' - '.$model->dewanGuru->name;
+                }
+
                 $events[] = [
                     'title' => sprintf(
                         '%s %s %s',
                         trim($source['prefix']),
-                        $model->materi->angkatan.' - '.$model->materi->materi.' ('.$model->materi->keterangan.') - '.$model->dewanGuru->name,
+                        $materi,
                         trim($source['suffix']),
                     ),
                     'start' => $crudFieldValue,

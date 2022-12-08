@@ -28,6 +28,9 @@
                             {{ trans('cruds.materiMunaqosah.fields.keterangan') }}
                         </th>
                         <th>
+                            {{ trans('cruds.materiMunaqosah.fields.hafalan') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.materiMunaqosah.fields.jenis') }}
                         </th>
                         <th>
@@ -74,6 +77,11 @@
                             <td>
                                 @if($plotMunaqosah->jadwalMunaqosah->materi)
                                     {{ $plotMunaqosah->jadwalMunaqosah->materi->keterangan ?? '' }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->hafalan ?? '' }}
                                 @endif
                             </td>
                             <td>

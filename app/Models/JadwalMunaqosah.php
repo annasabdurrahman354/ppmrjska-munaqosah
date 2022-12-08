@@ -23,6 +23,7 @@ class JadwalMunaqosah extends Model
         'materi.materi',
         'materi.keterangan',
         'materi.jenis',
+        'materi.hafalan',
         'materi.angkatan',
         'materi.tahun_pelajaran',
         'materi.semester',
@@ -36,6 +37,7 @@ class JadwalMunaqosah extends Model
         'materi.materi',
         'materi.keterangan',
         'materi.jenis',
+        'materi.hafalan',
         'materi.angkatan',
         'materi.tahun_pelajaran',
         'materi.semester',
@@ -59,12 +61,18 @@ class JadwalMunaqosah extends Model
 
     public function getJadwalMunaqosahPluckAttribute()
     {
-        return "{$this->sesi} - {$this->materi->materi} - {$this->dewanGuru->name} ({$this->materi->angkatan})";
+        if($this->materi->hafalan == Null){
+            return "{$this->sesi} - {$this->materi->materi} - {$this->dewanGuru->name} ({$this->materi->angkatan})";
+        }
+        return "{$this->sesi} - {$this->materi->materi} & {$this->materi->hafalan} - {$this->dewanGuru->name} ({$this->materi->angkatan})";
     }
 
     public function getJadwalMunaqosahKalenderAttribute()
     {
-        return "{$this->materi->angkatan} - {$this->materi->materi} ({$this->materi->keterangan})";
+        if($this->materi->hafalan == Null){
+            return "{$this->materi->angkatan} - {$this->materi->materi} ({$this->materi->keterangan})";
+        }
+        return "{$this->materi->angkatan} - {$this->materi->materi} ({$this->materi->keterangan}) & {$this->materi->hafalan}";
     }
 
     public function getSesiAttribute($value)

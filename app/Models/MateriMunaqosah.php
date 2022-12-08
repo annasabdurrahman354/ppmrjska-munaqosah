@@ -27,6 +27,7 @@ class MateriMunaqosah extends Model
         'id',
         'materi',
         'keterangan',
+        'hafalan',
         'jenis',
         'angkatan',
         'tahun_pelajaran',
@@ -37,6 +38,7 @@ class MateriMunaqosah extends Model
         'id',
         'materi',
         'keterangan',
+        'hafalan',
         'jenis',
         'angkatan',
         'tahun_pelajaran',
@@ -52,6 +54,7 @@ class MateriMunaqosah extends Model
     protected $fillable = [
         'materi',
         'keterangan',
+        'hafalan',
         'jenis',
         'angkatan',
         'tahun_pelajaran',
@@ -60,7 +63,10 @@ class MateriMunaqosah extends Model
 
     public function getMateriMunaqosahPluckAttribute()
     {
-        return "{$this->materi} ({$this->angkatan})";
+        if($this->hafalan == Null){
+            return "{$this->materi} ({$this->angkatan})";
+        }
+        return "{$this->materi} & {$this->hafalan} ({$this->angkatan})";
     }
 
     public function getJenisLabelAttribute($value)

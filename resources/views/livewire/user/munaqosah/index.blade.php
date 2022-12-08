@@ -38,7 +38,7 @@
                             {{ trans('cruds.materiMunaqosah.fields.jenis') }}
                         </th>
                         <th>
-                            {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
+                            {{ trans('cruds.materiMunaqosah.fields.hafalan') }}
                         </th>
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.tahun_pelajaran') }}
@@ -86,7 +86,7 @@
                             </td>
                             <td>
                                 @if($plotMunaqosah->jadwalMunaqosah->materi)
-                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->angkatan ?? '' }}
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->hafalan ?? '' }}
                                 @endif
                             </td>
                             <td>

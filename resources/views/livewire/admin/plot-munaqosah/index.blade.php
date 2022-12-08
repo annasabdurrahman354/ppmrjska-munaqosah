@@ -76,6 +76,10 @@
                             @include('components.table.sort', ['field' => 'materi.jenis'])
                         </th>
                         <th>
+                            {{ trans('cruds.materiMunaqosah.fields.hafalan') }}
+                            @include('components.table.sort', ['field' => 'materi.hafalan'])
+                        </th>
+                        <th>
                             {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
                             @include('components.table.sort', ['field' => 'materi.angkatan'])
                         </th>
@@ -145,6 +149,11 @@
                             <td>
                                 @if($plotMunaqosah->jadwalMunaqosah->materi)
                                     {{ $plotMunaqosah->jadwalMunaqosah->materi->jenis_label }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($plotMunaqosah->jadwalMunaqosah->materi)
+                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->hafalan ?? '' }}
                                 @endif
                             </td>
                             <td>

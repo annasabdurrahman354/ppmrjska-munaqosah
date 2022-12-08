@@ -238,6 +238,8 @@ return [
             'id_helper'              => ' ',
             'materi'                 => 'Materi',
             'materi_helper'          => ' ',
+            'hafalan'                => 'Hafalan',
+            'hafalan_helper'         => ' ',
             'keterangan'             => 'Keterangan',
             'keterangan_helper'      => ' ',
             'jenis'                  => 'Jenis',
