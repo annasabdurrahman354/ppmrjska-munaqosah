@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateKabupatenRequest;
 use App\Http\Resources\Admin\KabupatenResource;
 use App\Models\Kabupaten;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class KabupatenApiController extends Controller

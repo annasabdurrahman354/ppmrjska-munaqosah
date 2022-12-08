@@ -146,7 +146,7 @@
                 @endcan
                 @can('management_access')
                     <li class="items-center">
-                        <a class="has-sub {{ request()->is("admin/provinsis*")||request()->is("admin/kabupatens*")||request()->is("admin/kecamatans*")||request()->is("admin/kelurahans*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
+                        <a class="has-sub {{ request()->is("admin/provinsis*")||request()->is("admin/kabupatens*") ? "sidebar-nav-active" : "sidebar-nav" }}" href="#" onclick="window.openSubNav(this)">
                             <i class="fa-fw fas c-sidebar-nav-icon fa-database">
                             </i>
                             {{ trans('cruds.management.title') }}

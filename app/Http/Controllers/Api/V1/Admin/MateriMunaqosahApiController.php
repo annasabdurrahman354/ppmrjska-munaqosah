@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateMateriMunaqosahRequest;
 use App\Http\Resources\Admin\MateriMunaqosahResource;
 use App\Models\MateriMunaqosah;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class MateriMunaqosahApiController extends Controller

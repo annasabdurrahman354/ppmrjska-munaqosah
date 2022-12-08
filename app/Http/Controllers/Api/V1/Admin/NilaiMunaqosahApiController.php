@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateNilaiMunaqosahRequest;
 use App\Http\Resources\Admin\NilaiMunaqosahResource;
 use App\Models\NilaiMunaqosah;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class NilaiMunaqosahApiController extends Controller

@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateProvinsiRequest;
 use App\Http\Resources\Admin\ProvinsiResource;
 use App\Models\Provinsi;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class ProvinsiApiController extends Controller

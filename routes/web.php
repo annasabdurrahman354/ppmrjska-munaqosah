@@ -7,9 +7,6 @@ use App\Http\Controllers\Admin\DewanGuruController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\JadwalMunaqosahController;
 use App\Http\Controllers\Admin\KabupatenController;
-use App\Http\Controllers\Admin\KecamatanController;
-use App\Http\Controllers\Admin\KelurahanController;
-use App\Http\Controllers\Admin\MateriKbmController;
 use App\Http\Controllers\Admin\MateriMunaqosahController;
 use App\Http\Controllers\Admin\NilaiMunaqosahController;
 use App\Http\Controllers\Admin\PermissionController;
@@ -19,6 +16,7 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\KalenderMunaqosahController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\UserMunaqosahController;
+use App\Http\Controllers\User\UserProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -74,10 +72,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::get('/profile', [AdminProfileController::class, 'show'])->name('profile');
 });
 
-Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth', 'contact.check']], function () {
     
     Route::get('/', function () { return view('user.home');})->name('home');
     Route::resource('munaqosah', UserMunaqosahController::class, ['only' => ['index']]);
+    Route::get('profile/', [UserProfileController::class, 'index'])->name('profile.index');
     Route::get('munaqosah/plot/{jadwalMunaqosah}', [UserMunaqosahController::class, 'plot'])->name('munaqosah.plot')->where('jadwalMunaqosah', '[0-9]+');
+});
 
+
+Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth']], function () {
+    Route::get('profile/edit/', [UserProfileController::class, 'edit'])->name('profile.edit');
 });

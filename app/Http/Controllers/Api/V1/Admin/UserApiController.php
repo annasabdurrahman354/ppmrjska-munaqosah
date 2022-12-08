@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\Admin\UserResource;
 use App\Models\User;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserApiController extends Controller
@@ -17,7 +16,7 @@ class UserApiController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource(User::with(['provinsi', 'kabupaten', 'kecamatan', 'kelurahan', 'roles'])->get());
+        return new UserResource(User::with(['provinsi', 'kabupaten', 'roles'])->get());
     }
 
     public function store(StoreUserRequest $request)
@@ -34,7 +33,7 @@ class UserApiController extends Controller
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new UserResource($user->load(['provinsi', 'kabupaten', 'kecamatan', 'kelurahan', 'roles']));
+        return new UserResource($user->load(['provinsi', 'kabupaten', 'roles']));
     }
 
     public function update(UpdateUserRequest $request, User $user)

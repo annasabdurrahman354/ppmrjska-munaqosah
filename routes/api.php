@@ -3,9 +3,6 @@
 use App\Http\Controllers\Api\V1\Admin\DewanGuruApiController;
 use App\Http\Controllers\Api\V1\Admin\JadwalMunaqosahApiController;
 use App\Http\Controllers\Api\V1\Admin\KabupatenApiController;
-use App\Http\Controllers\Api\V1\Admin\KecamatanApiController;
-use App\Http\Controllers\Api\V1\Admin\KelurahanApiController;
-use App\Http\Controllers\Api\V1\Admin\MateriKbmApiController;
 use App\Http\Controllers\Api\V1\Admin\MateriMunaqosahApiController;
 use App\Http\Controllers\Api\V1\Admin\NilaiMunaqosahApiController;
 use App\Http\Controllers\Api\V1\Admin\PlotMunaqosahApiController;

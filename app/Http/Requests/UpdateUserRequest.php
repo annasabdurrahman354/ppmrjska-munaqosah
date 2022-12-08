@@ -85,16 +85,6 @@ class UpdateUserRequest extends FormRequest
                 'exists:kabupatens,id',
                 'required',
             ],
-            'kecamatan_id' => [
-                'integer',
-                'exists:kecamatans,id',
-                'required',
-            ],
-            'kelurahan_id' => [
-                'integer',
-                'exists:kelurahans,id',
-                'required',
-            ],
             'alamat' => [
                 'string',
                 'required',

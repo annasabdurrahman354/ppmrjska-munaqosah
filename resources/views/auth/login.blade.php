@@ -19,9 +19,9 @@
                             @csrf
                             <div class="relative w-full mb-3">
                                 <label class="block text-blueGray-600 font-medium text-sm mb-2" for="email">
-                                    {{ __('global.login_email') }}
+                                    Email/Nomor Induk Santri
                                 </label>
-                                <input id="email" name="email" type="email" class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('email') ? ' ring ring-red-300' : '' }}" placeholder="{{ __('global.login_email') }}" required autocomplete="email" autofocus value="{{ old('email') }}" />
+                                <input id="email" name="email"  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full {{ $errors->has('email') ? ' ring ring-red-300' : '' }}" placeholder="{{ __('global.login_email') }}" required autocomplete="email" autofocus value="{{ old('email') }}" />
                                 @error('email')
                                     <div class="text-red-500">
                                         <small>{{ $message }}</small>
@@ -59,13 +59,7 @@
                                         </a>
                                     @endif
                                 </div>
-                                <div class="w-1/2 text-right">
-                                    @if(Route::has('register'))
-                                        <a href="{{ route('register') }}" class="underline text-md text-blueGray-600 hover:text-gray-400">
-                                            {{ __('global.register') }}
-                                        </a>
-                                    @endif
-                                </div>
+                               
                             </div>
                         </form>
                     </div>

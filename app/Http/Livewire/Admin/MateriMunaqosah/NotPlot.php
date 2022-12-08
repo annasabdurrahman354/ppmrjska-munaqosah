@@ -41,8 +41,6 @@ class NotPlot extends Component
                 'kelompok',
                 'provinsi.name',
                 'kabupaten.name',
-                'kecamatan.name',
-                'kelurahan.name',
                 'alamat',
                 'status',
                 'email_verified_at',

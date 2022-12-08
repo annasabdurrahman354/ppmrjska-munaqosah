@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateJadwalMunaqosahRequest;
 use App\Http\Resources\Admin\JadwalMunaqosahResource;
 use App\Models\JadwalMunaqosah;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class JadwalMunaqosahApiController extends Controller

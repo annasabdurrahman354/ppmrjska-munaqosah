@@ -132,167 +132,103 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 31,
-                'title' => 'kecamatan_create',
-            ],
-            [
-                'id'    => 32,
-                'title' => 'kecamatan_edit',
-            ],
-            [
-                'id'    => 33,
-                'title' => 'kecamatan_show',
-            ],
-            [
-                'id'    => 34,
-                'title' => 'kecamatan_delete',
-            ],
-            [
-                'id'    => 35,
-                'title' => 'kecamatan_access',
-            ],
-            [
-                'id'    => 36,
-                'title' => 'kelurahan_create',
-            ],
-            [
-                'id'    => 37,
-                'title' => 'kelurahan_edit',
-            ],
-            [
-                'id'    => 38,
-                'title' => 'kelurahan_show',
-            ],
-            [
-                'id'    => 39,
-                'title' => 'kelurahan_delete',
-            ],
-            [
-                'id'    => 40,
-                'title' => 'kelurahan_access',
-            ],
-            [
-                'id'    => 41,
                 'title' => 'jadwal_munaqosah_create',
             ],
             [
-                'id'    => 42,
+                'id'    => 32,
                 'title' => 'jadwal_munaqosah_edit',
             ],
             [
-                'id'    => 43,
+                'id'    => 33,
                 'title' => 'jadwal_munaqosah_show',
             ],
             [
-                'id'    => 44,
+                'id'    => 34,
                 'title' => 'jadwal_munaqosah_delete',
             ],
             [
-                'id'    => 45,
+                'id'    => 35,
                 'title' => 'jadwal_munaqosah_access',
             ],
             [
-                'id'    => 46,
+                'id'    => 36,
                 'title' => 'dewan_guru_create',
             ],
             [
-                'id'    => 47,
+                'id'    => 37,
                 'title' => 'dewan_guru_edit',
             ],
             [
-                'id'    => 48,
+                'id'    => 38,
                 'title' => 'dewan_guru_show',
             ],
             [
-                'id'    => 49,
+                'id'    => 39,
                 'title' => 'dewan_guru_delete',
             ],
             [
-                'id'    => 50,
+                'id'    => 40,
                 'title' => 'dewan_guru_access',
             ],
             [
-                'id'    => 51,
-                'title' => 'materi_kbm_create',
-            ],
-            [
-                'id'    => 52,
-                'title' => 'materi_kbm_edit',
-            ],
-            [
-                'id'    => 53,
-                'title' => 'materi_kbm_show',
-            ],
-            [
-                'id'    => 54,
-                'title' => 'materi_kbm_delete',
-            ],
-            [
-                'id'    => 55,
-                'title' => 'materi_kbm_access',
-            ],
-            [
-                'id'    => 56,
+                'id'    => 41,
                 'title' => 'plot_munaqosah_create',
             ],
             [
-                'id'    => 57,
+                'id'    => 42,
                 'title' => 'plot_munaqosah_edit',
             ],
             [
-                'id'    => 58,
+                'id'    => 43,
                 'title' => 'plot_munaqosah_show',
             ],
             [
-                'id'    => 59,
+                'id'    => 44,
                 'title' => 'plot_munaqosah_delete',
             ],
             [
-                'id'    => 60,
+                'id'    => 45,
                 'title' => 'plot_munaqosah_access',
             ],
             [
-                'id'    => 61,
+                'id'    => 46,
                 'title' => 'nilai_munaqosah_create',
             ],
             [
-                'id'    => 62,
+                'id'    => 47,
                 'title' => 'nilai_munaqosah_edit',
             ],
             [
-                'id'    => 63,
+                'id'    => 48,
                 'title' => 'nilai_munaqosah_show',
             ],
             [
-                'id'    => 64,
+                'id'    => 49,
                 'title' => 'nilai_munaqosah_delete',
             ],
             [
-                'id'    => 65,
+                'id'    => 50,
                 'title' => 'nilai_munaqosah_access',
             ],
             [
-                'id'    => 66,
+                'id'    => 51,
                 'title' => 'materi_munaqosah_create',
             ],
             [
-                'id'    => 67,
+                'id'    => 52,
                 'title' => 'materi_munaqosah_edit',
             ],
             [
-                'id'    => 68,
+                'id'    => 53,
                 'title' => 'materi_munaqosah_show',
             ],
             [
-                'id'    => 69,
+                'id'    => 54,
                 'title' => 'materi_munaqosah_delete',
             ],
             [
-                'id'    => 70,
+                'id'    => 55,
                 'title' => 'materi_munaqosah_access',
-            ],
-            [
-                'id'    => 71,
-                'title' => 'kbm_access',
             ],
         ];
 

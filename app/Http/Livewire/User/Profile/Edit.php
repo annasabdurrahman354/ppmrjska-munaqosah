@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Admin\User;
+namespace App\Http\Livewire\User\Profile;
 
 use App\Models\Kabupaten;
 use App\Models\Provinsi;
 use App\Models\Role;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class Create extends Component
+class Edit extends Component
 {
     public User $user;
 
@@ -24,30 +25,32 @@ class Create extends Component
 
     public array $listsForFields = [];
 
-    public function mount(User $user)
+    public function mount()
     {
-        $this->user = $user;
+        $this->user  = Auth::user();
         $this->initListsForFields();
-
         $this->semuaProvinsi = Provinsi::all();
+        $this->provinsi = $this->user->provinsi_id;
+        
         $this->semuaKabupaten = collect();
+        $this->kabupaten = $this->user->kabupaten_id;
+        $this->semuaKabupaten = Kabupaten::where('provinsi_id', $this->user->provinsi_id)->get();
     }
 
     public function render()
     {
-        return view('livewire.admin.user.create');
+        return view('livewire.user.profile.edit');
     }
 
     public function submit()
     {
         $this->validate();
+        $this->user->password = $this->password;
         $this->user->provinsi_id = $this->provinsi;
         $this->user->kabupaten_id = $this->kabupaten;
-        $this->user->password = $this->password;
         $this->user->save();
-        $this->user->roles()->sync($this->roles);
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('user.profile.index');
     }
 
     protected function rules(): array
@@ -60,7 +63,7 @@ class Create extends Component
             'user.nis' => [
                 'string',
                 'required',
-                'unique:users,nis',
+                'unique:users,nis,' . $this->user->id,
             ],
             'user.telepon' => [
                 'string',
@@ -69,7 +72,7 @@ class Create extends Component
             'user.email' => [
                 'email:rfc',
                 'required',
-                'unique:users,email',
+                'unique:users,email,' . $this->user->id,
             ],
             'user.jenis_kelamin' => [
                 'required',
@@ -121,19 +124,6 @@ class Create extends Component
             ],
             'password' => [
                 'string',
-                'required',
-            ],
-            'roles' => [
-                'required',
-                'array',
-            ],
-            'roles.*.id' => [
-                'integer',
-                'exists:roles,id',
-            ],
-            'user.locale' => [
-                'string',
-                'nullable',
             ],
         ];
     }
@@ -141,7 +131,6 @@ class Create extends Component
     protected function initListsForFields(): void
     {
         $this->listsForFields['jenis_kelamin'] = $this->user::JENIS_KELAMIN_SELECT;
-        $this->listsForFields['roles']         = Role::pluck('title', 'id')->toArray();
     }
 
     public function updatedProvinsi($provinsi)

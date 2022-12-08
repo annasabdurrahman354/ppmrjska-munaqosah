@@ -18,6 +18,9 @@ class Index extends Component
 
     public int $perPage;
 
+    public int $countEmptyPasswords;
+    public string $usersJson = '';
+
     public array $orderable;
 
     public string $search = '';
@@ -37,6 +40,17 @@ class Index extends Component
             'except' => 'asc',
         ],
     ];
+
+    public function setEmptyPasswords()
+    {
+        $usersArray = json_decode($this->usersJson, true);
+        foreach($usersArray as $value) {
+            $user = User::where('nis', $value['nis'])->first();
+            $user->password = bcrypt($value['password']);
+            $user->save();
+        }
+        $this->resetPage();
+    }
 
     public function getSelectedCountProperty()
     {
@@ -60,6 +74,7 @@ class Index extends Component
 
     public function mount()
     {
+        $this->countEmptyPasswords = User::where('password', '')->get()->count();
         $this->sortBy            = 'name';
         $this->sortDirection     = 'asc';
         $this->perPage           = 50;

@@ -4,8 +4,6 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\JadwalMunaqosah;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class UserMunaqosahController extends Controller
 {

@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Admin\User;
 
 use App\Models\Kabupaten;
-use App\Models\Kecamatan;
-use App\Models\Kelurahan;
 use App\Models\Provinsi;
 use App\Models\Role;
 use App\Models\User;

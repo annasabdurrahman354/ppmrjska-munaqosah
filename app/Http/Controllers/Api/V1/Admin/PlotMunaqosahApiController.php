@@ -8,7 +8,6 @@ use App\Http\Requests\UpdatePlotMunaqosahRequest;
 use App\Http\Resources\Admin\PlotMunaqosahResource;
 use App\Models\PlotMunaqosah;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class PlotMunaqosahApiController extends Controller

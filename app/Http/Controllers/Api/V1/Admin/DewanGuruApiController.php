@@ -8,7 +8,6 @@ use App\Http\Requests\UpdateDewanGuruRequest;
 use App\Http\Resources\Admin\DewanGuruResource;
 use App\Models\DewanGuru;
 use Gate;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class DewanGuruApiController extends Controller

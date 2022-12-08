@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
                 'remember_token'    => null,
                 'email_verified_at' => now(),
                 'locale'            => '',
-                'nis'               => '',
+                'nis'               => '0',
                 'desa'              => '',
                 'kelompok'          => '',
                 'daerah'            => '',
