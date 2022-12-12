@@ -63,11 +63,13 @@ class Edit extends Component
             'user.nis' => [
                 'string',
                 'required',
+                'numeric',
                 'unique:users,nis,' . $this->user->id,
             ],
             'user.telepon' => [
                 'string',
                 'required',
+                'numeric',
             ],
             'user.email' => [
                 'email:rfc',

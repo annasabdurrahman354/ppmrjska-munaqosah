@@ -12,7 +12,7 @@
     </div>
     <div class="form-group {{ $errors->has('user.nis') ? 'invalid' : '' }}">
         <label class="form-label required" for="nis">{{ trans('cruds.user.fields.nis') }}</label>
-        <input class="form-control" type="text" name="nis" id="nis" required wire:model.defer="user.nis">
+        <input class="form-control" type="number" name="nis" id="nis" required wire:model.defer="user.nis">
         <div class="validation-message">
             {{ $errors->first('user.nis') }}
         </div>
@@ -22,7 +22,7 @@
     </div>
     <div class="form-group {{ $errors->has('user.telepon') ? 'invalid' : '' }}">
         <label class="form-label required" for="telepon">{{ trans('cruds.user.fields.telepon') }}</label>
-        <input class="form-control" type="text" name="telepon" id="telepon" required wire:model.defer="user.telepon">
+        <input class="form-control" type="number" name="telepon" id="telepon" required wire:model.defer="user.telepon">
         <div class="validation-message">
             {{ $errors->first('user.telepon') }}
         </div>
@@ -193,8 +193,8 @@
         </div>
     </div>
     <div class="form-group {{ $errors->has('roles') ? 'invalid' : '' }}">
-        <label class="form-label required" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
-        <x-select-list class="form-control" required id="roles" name="roles" wire:model="roles" :options="$this->listsForFields['roles']" multiple />
+        <label class="form-label" for="roles">{{ trans('cruds.user.fields.roles') }}</label>
+        <x-select-list class="form-control" id="roles" name="roles" wire:model="roles" :options="$this->listsForFields['roles']" multiple />
         <div class="validation-message">
             {{ $errors->first('roles') }}
         </div>
