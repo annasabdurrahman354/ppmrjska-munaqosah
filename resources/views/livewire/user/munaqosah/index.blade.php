@@ -109,7 +109,7 @@
                             
                             <td>
                                 <div class="flex justify-end">
-                                    @if (\Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $plotMunaqosah->jadwalMunaqosah->sesi)->gt(now()->addHours(24)))
+                                    @if (\Carbon\Carbon::createFromFormat('d/m/Y H:i:s', $plotMunaqosah->jadwalMunaqosah->sesi)->gt(now()->addHours(24)) && false)
                                     <button class="btn btn-sm btn-rose mr-2" type="button" wire:click="confirm('delete', {{ $plotMunaqosah->id }})" wire:loading.attr="disabled">
                                             {{ trans('global.delete') }}
                                     </button>

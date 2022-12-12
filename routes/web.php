@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\PlotMunaqosahController;
 use App\Http\Controllers\Admin\ProvinsiController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\KalenderMunaqosahController;
+use App\Http\Controllers\Admin\Pdf\ExportPlotMunaqosah;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\UserMunaqosahController;
 use App\Http\Controllers\User\UserProfileController;
@@ -70,10 +71,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
     Route::resource('materi-munaqosah', MateriMunaqosahController::class, ['except' => ['store', 'update', 'destroy']]);
 
     Route::get('/profile', [AdminProfileController::class, 'show'])->name('profile');
+
+    Route::get('/pdf/plot-munaqosah', [ExportPlotMunaqosah::class, 'download'])->name('pdf.plot-munaqosah');
+
 });
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'middleware' => ['auth', 'contact.check']], function () {
-    
+
     Route::get('/', function () { return view('user.home');})->name('home');
     Route::resource('munaqosah', UserMunaqosahController::class, ['only' => ['index']]);
     Route::get('profile/', [UserProfileController::class, 'index'])->name('profile.index');

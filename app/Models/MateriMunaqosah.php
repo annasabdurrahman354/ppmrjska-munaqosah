@@ -81,7 +81,7 @@ class MateriMunaqosah extends Model
 
     public function jadwalMunaqosahs()
     {
-        return $this->hasMany(JadwalMunaqosah::class);
+        return $this->hasMany(JadwalMunaqosah::class, 'materi_id');
     }
 
     public function plots()

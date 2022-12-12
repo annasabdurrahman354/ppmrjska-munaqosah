@@ -16,8 +16,11 @@
 
             @if(file_exists(app_path('Http/Livewire/Admin/ExcelExport.php')))
                 <livewire:admin.excel-export model="JadwalMunaqosah" format="xlsx" />
-                <livewire:admin.excel-export model="JadwalMunaqosah" format="pdf" />
             @endif
+
+            <a class="btn btn-secondary" href="{{ route('admin.pdf.plot-munaqosah') }}">
+                Export Jadwal
+            </a>
 
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">

@@ -87,7 +87,7 @@ class JadwalMunaqosah extends Model
 
     public function materi()
     {
-        return $this->belongsTo(MateriMunaqosah::class);
+        return $this->belongsTo(MateriMunaqosah::class, 'materi_id');
     }
 
     public function dewanGuru()
