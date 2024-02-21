@@ -1,0 +1,2 @@
+[12-Dec-2022 07:39:59 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 8.1.0". You are running 8.0.26. in /home/ppmrjska/public_html/vendor/composer/platform_check.php on line 24
+[13-Dec-2022 18:41:21 Asia/Jakarta] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/ppmrjska/public_html/vendor/dompdf/dompdf/src/Cellmap.php on line 655

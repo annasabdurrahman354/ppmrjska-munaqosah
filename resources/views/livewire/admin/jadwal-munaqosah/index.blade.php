@@ -13,15 +13,14 @@
                     {{ __('Delete Selected') }}
                 </button>
             @endcan
+            
+            <a class="btn btn-primary" href="{{ route('admin.kelola.plot-munaqosah') }}">
+                Cetak Jadwal
+            </a>
 
             @if(file_exists(app_path('Http/Livewire/Admin/ExcelExport.php')))
                 <livewire:admin.excel-export model="JadwalMunaqosah" format="xlsx" />
             @endif
-
-            <a class="btn btn-secondary" href="{{ route('admin.pdf.plot-munaqosah') }}">
-                Export Jadwal
-            </a>
-
         </div>
         <div class="w-full sm:w-1/2 sm:text-right">
             Search:
@@ -196,10 +195,10 @@
 @push('scripts')
     <script>
         Livewire.on('confirm', e => {
-    if (!confirm("{{ trans('global.areYouSure') }}")) {
-        return
-    }
-@this[e.callback](...e.argv)
-})
+            if (!confirm("{{ trans('global.areYouSure') }}")) {
+                return
+            }
+        @this[e.callback](...e.argv)
+        })
     </script>
 @endpush

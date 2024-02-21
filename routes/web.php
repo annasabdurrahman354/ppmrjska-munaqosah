@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Livewire\Auth\Register;
-use App\Http\Livewire\Auth\Dashboard;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\DewanGuruController;
 use App\Http\Controllers\Admin\HomeController;
@@ -14,10 +13,10 @@ use App\Http\Controllers\Admin\PlotMunaqosahController;
 use App\Http\Controllers\Admin\ProvinsiController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\KalenderMunaqosahController;
-use App\Http\Controllers\Admin\Pdf\ExportPlotMunaqosah;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\User\UserMunaqosahController;
 use App\Http\Controllers\User\UserProfileController;
+use App\Http\Livewire\Admin\ExportPlotMunaqosah;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -72,7 +71,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['auth', 'a
 
     Route::get('/profile', [AdminProfileController::class, 'show'])->name('profile');
 
-    Route::get('/pdf/plot-munaqosah', [ExportPlotMunaqosah::class, 'download'])->name('pdf.plot-munaqosah');
+    Route::get('/kelola/plot-munaqosah', ExportPlotMunaqosah::class)->name('kelola.plot-munaqosah');
 
 });
 

@@ -61,6 +61,8 @@ class MateriMunaqosah extends Model
         'semester',
     ];
 
+    protected $appends = ['dewan_guru'];
+
     public function getMateriMunaqosahPluckAttribute()
     {
         if($this->hafalan == Null){
@@ -69,9 +71,16 @@ class MateriMunaqosah extends Model
         return "{$this->materi} & {$this->hafalan} ({$this->angkatan})";
     }
 
-    public function getJenisLabelAttribute($value)
+    public function getJenisLabelAttribute()
     {
         return static::JENIS_SELECT[$this->jenis] ?? null;
+    }
+
+    public function getDewanGuruAttribute()
+    {
+        $firstJadwalMunaqosah = $this->jadwalMunaqosahs->first();
+        $dewanGuru = optional($firstJadwalMunaqosah)->dewanGuru->name;
+        return $dewanGuru;
     }
 
     protected function serializeDate(DateTimeInterface $date)

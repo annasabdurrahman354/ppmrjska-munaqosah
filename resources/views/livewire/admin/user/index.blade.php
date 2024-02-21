@@ -239,11 +239,13 @@
         </div>
     </div>
     
-    <input type="text" wire:model.debounce.300ms="usersJson" class="ml-3 mb-3 w-full sm:w-1/3 inline-block" />
-    <button class="btn btn-rose ml-3 mb-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('setEmptyPasswords')" wire:loading.attr="disabled" {{ $this->countEmptyPasswords ? '' : 'disabled' }}>
-        Generate Password
-    </button>
-    Users Without Password : {{$this->countEmptyPasswords}}
+   
+    <input type="text" wire:model.lazy="usersJson" class="ml-3 mb-3 w-full sm:w-1/3 inline-block" wire:loading.attr="disabled"/>
+    <div wire:loading.remove>
+        <button class="btn btn-rose ml-3 mb-3 disabled:opacity-50 disabled:cursor-not-allowed" type="button" wire:click="confirm('addNewUsers')" wire:loading.attr="disabled">
+            Generate Users
+        </button>
+    </div>
 </div>
 
 @push('scripts')

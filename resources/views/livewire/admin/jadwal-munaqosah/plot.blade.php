@@ -30,10 +30,7 @@
                             {{ trans('cruds.materiMunaqosah.fields.keterangan') }}
                             @include('components.table.sort', ['field' => 'materi.keterangan'])
                         </th>
-                        <th>
-                            {{ trans('cruds.materiMunaqosah.fields.jenis') }}
-                            @include('components.table.sort', ['field' => 'materi.jenis'])
-                        </th>
+
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.hafalan') }}
                             @include('components.table.sort', ['field' => 'materi.hafalan'])
@@ -42,19 +39,11 @@
                             {{ trans('cruds.materiMunaqosah.fields.angkatan') }}
                             @include('components.table.sort', ['field' => 'materi.angkatan'])
                         </th>
-                        <th>
-                            {{ trans('cruds.materiMunaqosah.fields.tahun_pelajaran') }}
-                            @include('components.table.sort', ['field' => 'materi.tahun_pelajaran'])
-                        </th>
+                   
                         <th>
                             {{ trans('cruds.materiMunaqosah.fields.semester') }}
                             @include('components.table.sort', ['field' => 'materi.semester'])
                         </th>
-                        <th>
-                            {{ trans('cruds.jadwalMunaqosah.fields.dewan_guru') }}
-                            @include('components.table.sort', ['field' => 'dewan_guru.name'])
-                        </th>
-
   
                         <th>
                         </th>
@@ -89,11 +78,7 @@
                                     {{ $plotMunaqosah->jadwalMunaqosah->materi->keterangan ?? '' }}
                                 @endif
                             </td>
-                            <td>
-                                @if($plotMunaqosah->jadwalMunaqosah->materi)
-                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->jenis_label }}
-                                @endif
-                            </td>
+                       
                             <td>
                                 @if($plotMunaqosah->jadwalMunaqosah->materi)
                                     {{ $plotMunaqosah->jadwalMunaqosah->materi->hafalan }}
@@ -104,21 +89,13 @@
                                     {{ $plotMunaqosah->jadwalMunaqosah->materi->angkatan ?? '' }}
                                 @endif
                             </td>
-                            <td>
-                                @if($plotMunaqosah->jadwalMunaqosah->materi)
-                                    {{ $plotMunaqosah->jadwalMunaqosah->materi->tahun_pelajaran ?? '' }}
-                                @endif
-                            </td>
+                            
                             <td>
                                 @if($plotMunaqosah->jadwalMunaqosah->materi)
                                     {{ $plotMunaqosah->jadwalMunaqosah->materi->semester ?? '' }}
                                 @endif
                             </td>
-                            <td>
-                                @if($plotMunaqosah->jadwalMunaqosah->dewanGuru)
-                                    <span class="badge badge-relationship">{{ $plotMunaqosah->jadwalMunaqosah->dewanGuru->name ?? '' }}</span>
-                                @endif
-                            </td>
+                
 
                             <td>
                                 <div class="flex justify-end">

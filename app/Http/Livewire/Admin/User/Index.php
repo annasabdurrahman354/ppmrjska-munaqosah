@@ -41,13 +41,30 @@ class Index extends Component
         ],
     ];
 
-    public function setEmptyPasswords()
+    public function addNewUsers()
     {
         $usersArray = json_decode($this->usersJson, true);
         foreach($usersArray as $value) {
-            $user = User::where('nis', $value['nis'])->first();
-            $user->password = bcrypt($value['password']);
-            $user->save();
+            $checkUser = User::where('nis', $value['nis'])->first();
+            if ($checkUser === null) {
+                $user = User::create([
+                    "name" => $value['name'],
+                    "nis" => $value['nis'],
+                    "telepon" => $value['telepon'],
+                    "email" => $value['email'],
+                    "jenis_kelamin" => $value['jenis_kelamin'],
+                    "universitas" => $value['universitas'],
+                    "angkatan_ppm" => $value['angkatan_ppm'],
+                    "angkatan_kuliah" => $value['angkatan_kuliah'],
+                    "daerah" => $value['daerah'],
+                    "desa" => $value['desa'],
+                    "kelompok" => $value['kelompok'],
+                    "alamat" => $value['alamat'],
+                    "status" => $value['status'],
+                    "password" => bcrypt($value['password'])
+                ]);
+                $user->save();
+            }   
         }
         $this->resetPage();
     }
